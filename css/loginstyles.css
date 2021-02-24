@@ -1,4 +1,8 @@
-/*Login Styles*/
+/* ==========================================
+* LOGIN
+* ==========================================
+*
+*/
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 /****** LOGIN MODAL ******/
 .loginmodal-container {
@@ -100,36 +104,4 @@
 a:hover, a:focus {
     color: #FFF;
     text-decoration: none;
-}
-/* End Login Styles */
-
-/* Card-list Styles */
-.btn {
-    background-color: red;
-    color: #f6f6f6;
-    margin: 5px;
-    margin-bottom: 20px;
-}
- h2 {
-     margin-top: 0px;
-     margin-bottom: 20px;
- }
-
- /* Card Details Styles */
-p {
-    margin: 5px;
-}
-#deletebtn {
-    background-color: #818181;
-}
-
-/* Edit Overlay Card Update */
-.wrapper {
-    position: relative;
-}
-
-.wrapper .glyphicon {
-    position: absolute;
-    top: 20px;
-    right: 50px;
 }
