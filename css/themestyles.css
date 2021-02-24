@@ -2553,6 +2553,13 @@ button.bg-danger:focus {
     background-color: #f8f9fa !important;
 }
 
+#pink-hero-section {
+    background-color: #f4b1a1 !important;
+}
+#blue-hero-section{
+    background-color: #7fa4d6 !important;
+}
+
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
 button.bg-light:focus {
@@ -3417,7 +3424,12 @@ code {
 .breadcrumb {
     background: #f8f9fa;
 }
-
+#pink-breadcrumb{
+    background: #f4b1a1;
+}
+#blue-breadcrumb{
+    background: #7fa4d6;
+}
 .breadcrumb-item {
     font-size: 0.85rem;
     text-transform: uppercase;
