@@ -286,6 +286,29 @@ button:focus, button:active {
     transition: all 0.3s;
     opacity: 0;
 }
+/*
+=====================================
+user acount details
+=====================================
+*/
+
+/*
+Admin 
+*/
+.user-details img{
+    margin: 10px 0px;
+}
+.profile-info{
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
 
 /*
 * ===================================================
