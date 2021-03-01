@@ -32,21 +32,21 @@
     <!-- navbar-->
     <header class="header bg-white">
         <div class="container px-0 px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span class="font-weight-bold text-uppercase text-dark">Suburban Outfitters</span></a>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.php"><span class="font-weight-bold text-uppercase text-dark">Suburban Outfitters</span></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link active" href="index.html">Home</a>
+                            <!-- Link--><a class="nav-link active" href="index.php">Home</a>
                         </li>
                         </li>
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="proddetails.html">Product detail</a>
+                            <!-- Link--><a class="nav-link" href="proddetails.php">Product detail</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.html"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -64,7 +64,7 @@
                 <div class="col-lg-6 text-lg-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-lg-end mb-0 px-0" id="pink-breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Checkout</li>
                         </ol>
                     </nav>
@@ -91,8 +91,8 @@
                         <tbody>
                         <tr>
                             <th class="pl-0 border-0" scope="row">
-                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.html"><img src="/suburbanoutfitters/img/redshirt.png" alt="..." width="70"/></a>
-                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.html">Red T-Shirt</a></strong></div>
+                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/redshirt.png" alt="..." width="70"/></a>
+                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">Red T-Shirt</a></strong></div>
                                 </div>
                             </th>
                             <td class="align-middle border-0">
@@ -107,8 +107,8 @@
                         </tr>
                         <tr>
                             <th class="pl-0 border-light" scope="row">
-                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.html"><img src="/suburbanoutfitters/img/purplepants.png" alt="..." width="70"/></a>
-                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.html">Purple Pants</a></strong></div>
+                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/purplepants.png" alt="..." width="70"/></a>
+                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">Purple Pants</a></strong></div>
                                 </div>
                             </th>
                             <td class="align-middle border-light">

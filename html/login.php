@@ -21,12 +21,12 @@
                     <div class="loginmodal-container" style="background: url(binding_dark.png)repeat fixed;color: black;">
                         <img src="/suburbanoutfitters/img/SUlogo.png"><br>
                         <h3 style="text-align: center">Suburban Outfitters</h3><br>
-                        <form action="index.html" method="post">
+                        <form action="index.php" method="post">
                             <input type="text" name="uname" placeholder="Username" autocomplete="off" required>
                             <input type="password" name="upass" placeholder="Password" autocomplete="off" required>
                             <input type="submit" name="login" class="login loginmodal-submit" value="Login" style="background-color:#80b2f0;">
                         </form>
-                        <a href="/suburbanoutfitters/html/index.html"><span style="text-align: center">New? Create Account</span></a>
+                        <a href="/suburbanoutfitters/html/index.php"><span style="text-align: center">New? Create Account</span></a>
                     </div>
                 </div>
             </div>

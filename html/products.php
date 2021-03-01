@@ -32,21 +32,21 @@
     <!-- navbar-->
     <header class="header bg-white">
         <div class="container px-0 px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span class="font-weight-bold text-uppercase text-dark">Suburban Outfitters</span></a>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.php"><span class="font-weight-bold text-uppercase text-dark">Suburban Outfitters</span></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link active" href="index.html">Home</a>
+                            <!-- Link--><a class="nav-link active" href="index.php">Home</a>
                         </li>
                         </li>
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="proddetails.html">Product detail</a>
+                            <!-- Link--><a class="nav-link" href="proddetails.php">Product detail</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.html"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -65,7 +65,7 @@
                 <div class="col-lg-6 text-lg-right">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-lg-end mb-0 px-0" id="pink-breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Shop</li>
                         </ol>
                     </nav>
@@ -111,10 +111,10 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
-                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/redshirt.png" alt="Red Shirt"></a>
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/redshirt.png" alt="Red Shirt"></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -126,10 +126,10 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
-                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/blueshirt.png" alt="..."></a>
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/blueshirt.png" alt="..."></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -141,10 +141,10 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
-                                    <div class="badge text-white badge-primary"></div><a class="d-block" href="proddetails.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/purplepants.png" alt="..."></a>
+                                    <div class="badge text-white badge-primary"></div><a class="d-block" href="proddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/purplepants.png" alt="..."></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -156,10 +156,10 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
-                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/greenpants.png" alt="..."></a>
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/greenpants.png" alt="..."></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -171,10 +171,10 @@
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
-                                    <div class="badge text-white badge-info"></div><a class="d-block" href="proddetails.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/brownshoes.png" alt="..."></a>
+                                    <div class="badge text-white badge-info"></div><a class="d-block" href="proddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/brownshoes.png" alt="..."></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -189,11 +189,11 @@
                                     <div class="badge text-white badge-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/pinkshoes.jpg" alt="..."></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <h6> <a class="reset-anchor" href="/suburbanoutfitters/html/proddetails.html">Pink Shoes</a></h6>
+                                <h6> <a class="reset-anchor" href="/suburbanoutfitters/html/proddetails.php">Pink Shoes</a></h6>
                                 <p class="small text-muted">$75</p>
                             </div>
                         </div>

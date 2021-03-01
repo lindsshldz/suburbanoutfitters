@@ -32,21 +32,21 @@
     <!-- navbar-->
     <header class="header bg-white">
         <div class="container px-0 px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span class="font-weight-bold text-uppercase text-dark">Suburban Outfitters</span></a>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.php"><span class="font-weight-bold text-uppercase text-dark">Suburban Outfitters</span></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link active" href="index.html">Home</a>
+                            <!-- Link--><a class="nav-link active" href="index.php">Home</a>
                         </li>
                         </li>
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="proddetails.html">Product detail</a>
+                            <!-- Link--><a class="nav-link" href="proddetails.php">Product detail</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="login.html"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
                     </ul>
                 </div>
             </nav>
@@ -59,7 +59,7 @@
             <div class="container py-5">
                 <div class="row px-4 px-lg-5">
                     <div class="col-lg-6">
-                        <h1 class="h2 text-uppercase mb-3">20% off Winter Sale</h1><a class="btn btn-dark" href="products.html">Shop All</a>
+                        <h1 class="h2 text-uppercase mb-3">20% off Winter Sale</h1><a class="btn btn-dark" href="products.php">Shop All</a>
                     </div>
                 </div>
             </div>
@@ -70,9 +70,9 @@
                 <h3 class="h5 text-uppercase mb-4">Categories</h3>
             </header>
             <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.html"><img class="img-fluid" src="/suburbanoutfitters/img/shirticon.png" alt=""><strong class="category-item-title">Shirts</strong></a></div>
-                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.html"><img class="img-fluid" src="/suburbanoutfitters/img/pantsicon.png" alt=""><strong class="category-item-title">Pants</strong></a></div>
-                <div class="col-md-4"><a class="category-item" href="products.html"><img class="img-fluid" src="/suburbanoutfitters/img/shoeicon.png" alt=""><strong class="category-item-title">Shoes</strong></a></div>
+                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php"><img class="img-fluid" src="/suburbanoutfitters/img/shirticon.png" alt=""><strong class="category-item-title">Shirts</strong></a></div>
+                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php"><img class="img-fluid" src="/suburbanoutfitters/img/pantsicon.png" alt=""><strong class="category-item-title">Pants</strong></a></div>
+                <div class="col-md-4"><a class="category-item" href="products.php"><img class="img-fluid" src="/suburbanoutfitters/img/shoeicon.png" alt=""><strong class="category-item-title">Shoes</strong></a></div>
             </div>
         </section>
     </div>
