@@ -42,22 +42,22 @@
 
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="adminacct.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 </div>
-<div>
-    <form>
+<div  class="container">
+    <form method="post" action="aproducts.php">
 
     <fieldset style="width:200px;">
 
-        <legend><b>Add New Product</b></legend>
+        <h3>Product Details</h3>
 
         <p>Title</p>
-        <input type="text" id="Title" placeholder="Blouse" required/>
+        <input type="text" id="Title" placeholder="Blouse"/>
         <br><br>
 
         <p>Description</p>
@@ -66,78 +66,62 @@
 
 
         <p>Sell Price</p>
-        <input type="text" id="Price" placeholder="$45" required/>
+        <input type="text" id="Price" placeholder="$45"/>
         <br><br>
 
         <p>Thumbnail URL</p>
-        <input type="text" id="URL" placeholder="www.soimageserver.com/img1234" required/>
+        <input type="text" id="URL" placeholder="www.soimageserver.com/img1234"/>
         <br><br>
         <p>Image URL</p>
-        <input type="text" id="URL" placeholder="www.soimageserver.com/img1234" required/>
+        <input type="text" id="URL" placeholder="www.soimageserver.com/img1234"/>
         <br><br>
-        <input type="Submit" value="Submit Changes" />
+        <input type="Submit" value="Update Details" />
 
         <head>
     </fieldset>
 
 </form>
-</div>
 <br><br>
 <div>
-    <button type="button">Submit</button>
-
-    <button type="button">Cancel</button>
-    <br><br>
     <hr>
     <h2>Inventory</h2>
+    <form method="post" action="">
     <table style="width:100%">
-        <tr><form>
+        <tr>
             <label for="quantity">Quantity:</label><tr>
             <tr><input type="number" id="quantity" name="quantity" min="1" max="5">
-        </form></tr>
-        <tr><form>
+        </tr>
+        <tr>
             <label for="Size">Size:</label>
             <input type="Size" id="Size" name="Size">
-        </form></tr>
-        <tr><form>
+        </tr>
+        <tr>
             <label for="price">Price:</label>
             <input type="price" id="price" name="Price">
-        </form></tr>
+        </tr>
     <br><br>
-        <tr><form>
+        <tr>
             <label for="quantity">Quantity:</label><tr>
 
         <tr><input type="number" id="quantity" name="quantity" min="1" max="5">
-        </form></tr>
-        <tr><form>
+        </tr>
+        <tr>
             <label for="Size">Size:</label>
             <input type="Size" id="Size" name="Size">
-        </form></tr>
-        <tr><form>
+        </tr>
+        <tr>
             <label for="price">Price:</label>
             <input type="price" id="price" name="Price">
-        </form></tr>
-
-    <br><br>
-        <tr><form>
-            <label for="quantity">Quantity:</label><tr>
-        <tr><input type="number" id="quantity" name="quantity" min="1" max="5">
-        </form></tr>
-        <tr><form>
-            <label for="Size">Size:</label>
-            <input type="Size" id="Size" name="Size">
-        </form></tr>
-        <tr><form>
-            <label for="price">Price:</label>
-            <input type="price" id="price" name="Price">
-        </form></tr>
-    <br><br>
-    <br><br>
-    <button type="button">Submit</button>
-
-    <button type="button">Cancel</button>
-    <br><br>
+        </tr>
+        <br><br>
+        <input type="submit" value="Update Inventory">
+        <br><br>
+    </form>
     </table>
+</div>
+    <div class="col-lg-12 form-group" style="text-align: center">
+        <button class="btn btn-dark" type="submit"><a href="aproducts.php">Cancel</a></button>
+    </div>
 </div>
 </body>
 </html>

@@ -78,13 +78,20 @@
             <input type="file" value="update photo">
             <div class="border-bottom my-2"></div>
             <div class="card-body">
-                <h5 class="text-uppercase mb-4">Order Lists by [username]</this></h5>
+                <h5 class="text-uppercase mb-4">Assisted Order Lists by [username]</this></h5>
                     <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Product Name</strong><span>Details</span></li>
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Product Name</strong><span>Details</span></li>
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Product Name</strong><span>Details</span></li>
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Product Name</strong><span>Details</span></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
                     </ul>
+            </div>
+                <div class="col-lg-12 form-group" style="text-align: center">
+                    <button class="btn btn-dark" type="submit"><a href="aorderlist.php">View All Customer Orders</a></button>
+                </div>
+            <div class="border-bottom my-2"></div>
+            <div class="col-lg-12 form-group" style="text-align: center">
+                <button class="btn btn-dark" type="submit"><a href="aproducts.php">Manage Inventory</a></button>
             </div>
         </div>
     </div>

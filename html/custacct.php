@@ -43,15 +43,14 @@
 
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Jane Doe</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 </div>
-<div>
-    <button type="button">Update</button>
+<div class="container">
     <form>
         <fieldset style="width:200px;">
 
@@ -86,14 +85,14 @@
         <th>OrderNumber</th>
         <th>OrderTotal</th>
         <th>ShipStatus</th>
-        <th> <a href="http://localhost/Project/Details.php"> View Details</a></th>
+        <th> <a href="checkout.php"> View Details</a></th>
     </tr>
     <tr>
         <th>OrderDate</th>
         <th>OrderNumber</th>
         <th>OrderTotal</th>
         <th>ShipStatus</th>
-        <th> <a href="http://localhost/Project/Details.php"> View Details</a> </th>
+        <th> <a href="checkout.php"> View Details</a> </th>
     </tr>
 </table>
 </section>

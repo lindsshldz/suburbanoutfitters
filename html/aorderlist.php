@@ -41,7 +41,7 @@
                             
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="adminacct.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -52,14 +52,14 @@
     <div class="container">
         <div class="card bg-primary text-white">
             <div class="card-body text-uppercase">Customer Order Lists</div>
-            <div class="search-container">
-                <form action="#">
-                  <input type="text" placeholder="Search.." name="search">
-                  <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
-              </div>
           </div>
         <div class="card border-0 rounded-0 p-lg-4 bg-light">
+            <div class="search-container">
+                <form action="#">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         <div class="row">
             <div class="col-sm-4">
                 <h2 class="h5 text-uppercase mb-4">Order Number</h2>

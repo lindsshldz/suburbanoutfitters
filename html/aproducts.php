@@ -41,17 +41,15 @@
 
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="adminacct.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 </div>
-<div>
-    <a href="aproddetails.php"> Login Page</a>
-    <br><br>
-    <button type="button">+Add New Product</button>
+<div  class="container">
+    <button type="button"><a href="aproddetails.php">+Add New Product</a></button>
     <br><br>
     <a href="aproddetails.php">Red T-shirt</a>
     <br><br>
