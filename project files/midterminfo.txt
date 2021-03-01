@@ -1,0 +1,30 @@
+Group 5 - Suburban Outfitters
+Midterm Project Submission
+General Info.
+
+This is our initial html/css/bootstrap submission for the Suburban Outfitters e-commerce site. There is still a lot
+of work that needs to be done to polish the user experience, especially for an admin.
+
+Use cases not started:
+#7. Create Account, "custacct" page:
+    -Customer
+    -Admin
+#9. View Order Details, "orderdetails" page:
+    -Page for customer to see specific order details and status after they login to their account page
+
+Notes on existing pages:
+#1. Home Page:
+    -Links to specific filtered categories will eventually work
+    -Currently only going to general all products list
+#2. Products Page:
+    -Filtering to category only items will eventually work, now only list all products
+    -Eventually will link to a specific product page instead of just Red T-shirt
+#5. Login:
+    -Eventually logic with php/js will read domains ("@suburbanoutfitters.com" vs anything else) and direct accordingly
+    -To ensure page linkage, currently have temporary links provided to get to the different admin/customer view
+#14. Update Product Details and Inventory:
+    -For new product, all fields will be blank
+    -For existing product, fields will populate with existing info
+    -Still missing "add new line" functionality to add inventory according to how many sizes there are for that item
+General Admin Pages:
+    -Styling was focused on customer pages, still need updates to applying CSS branding and more polish to final project
