@@ -11,6 +11,9 @@ Use cases not started:
     -Admin
 #9. View Order Details, "orderdetails" page:
     -Page for customer to see specific order details and status after they login to their account page
+NEW Report Functionality:
+    -Per Prof. Oh notes, still need to add admin reporting pages
+    -Will have by final submission
 
 Notes on existing pages:
 #1. Home Page:
