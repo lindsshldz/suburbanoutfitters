@@ -51,17 +51,139 @@
 <div  class="container">
     <button type="button"><a href="aproddetails.php">+Add New Product</a></button>
     <br><br>
-    <a href="aproddetails.php">Red T-shirt</a>
-    <br><br>
-    <a href="aproddetails.php">Blue T-shirt</a>
-    <br><br>
-    <a href="haproddetails.php">Purple Pants</a>
-    <br><br>
-    <a href="haproddetails.php">Green Pants</a>
-    <br><br>
-    <a href="aproddetails.php">Brown Shoes</a>
-    <br><br>
-    <a href="aproddetails.php">Pink Shoes</a>
-    <br><br>
+
+<body>
+<div class="page-holder">
+ 
+    <section class="py-5">
+        <div class="container p-0">
+            <div class="row">
+                <!-- SHOP SIDEBAR-->
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <h5 class="text-uppercase mb-4">Categories</h5>
+                    <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase font-weight-bold">Fashion</strong></div>
+                    <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
+                        <li class="mb-2"><a class="reset-anchor" href="#">Shirts</a></li>
+                        <li class="mb-2"><a class="reset-anchor" href="#">Pants</a></li>
+                        <li class="mb-2"><a class="reset-anchor" href="#">Shoes</a></li>
+                    </ul>
+                </div>
+                <!-- SHOP LISTING-->
+                <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-lg-6 mb-2 mb-lg-0">
+                            <p class="text-small text-muted mb-0">Showing 1–6 of 6 results</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
+                                <li class="list-inline-item text-muted mr-3"><a class="reset-anchor p-0" href="#"><i class="fas fa-th-large"></i></a></li>
+                                <li class="list-inline-item text-muted mr-3"><a class="reset-anchor p-0" href="#"><i class="fas fa-th"></i></a></li>
+                                <li class="list-inline-item">
+                                    <select class="selectpicker ml-auto" name="sorting" data-width="200" data-style="bs-select-form-control" data-title="Default sorting">
+                                        <option value="default">Default sorting</option>
+                                        <option value="low-high">Price: Low to High</option>
+                                        <option value="high-low">Price: High to Low</option>
+                                    </select>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="aproddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/redshirt.png" alt="Red Shirt"></a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Red T-Shirt</a></h6>
+                                <p class="small text-muted">$25</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="aproddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/blueshirt.png" alt="..."></a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Blue T-Shirt</a></h6>
+                                <p class="small text-muted">$25</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white badge-primary"></div><a class="d-block" href="aproddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/purplepants.png" alt="..."></a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Purple Pants</a></h6>
+                                <p class="small text-muted">$50</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="aproddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/greenpants.png" alt="..."></a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Green Pants</a></h6>
+                                <p class="small text-muted">$50</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white badge-info"></div><a class="d-block" href="proddetails.php"><img class="img-fluid w-100" src="/suburbanoutfitters/img/brownshoes.png" alt="..."></a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="detail.html">Brown Shoes</a></h6>
+                                <p class="small text-muted">$75</p>
+                            </div>
+                        </div>
+                        <!-- PRODUCT-->
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="/suburbanoutfitters/img/pinkshoes.jpg" alt="..."></a>
+                                    <div class="product-overlay">
+                                        <ul class="mb-0 list-inline">
+                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h6> <a class="reset-anchor" href="/suburbanoutfitters/html/aproddetails.php">Pink Shoes</a></h6>
+                                <p class="small text-muted">$75</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 </body>
+</html>
