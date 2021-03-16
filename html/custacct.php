@@ -64,8 +64,8 @@
             <input type="text" id="Last Name" placeholder="Enter Last Name"/>
             <br><br>
 
-            <p>Email</p>
-            <input type="text" id="Email" placeholder="Enter Email" required/>
+            <p>Username</p>
+            <input type="text" id="Username" placeholder="Enter Username" required/>
             <br><br>
 
             <p>Password</p>
