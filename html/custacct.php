@@ -64,8 +64,8 @@
             <input type="text" id="Last Name" placeholder="Enter Last Name"/>
             <br><br>
 
-            <p>Email</p>
-            <input type="text" id="Email" placeholder="Enter Email" required/>
+            <p>Username</p>
+            <input type="text" id="Email" placeholder="Enter Username" required/>
             <br><br>
 
             <p>Password</p>
@@ -85,14 +85,14 @@
         <th>OrderNumber</th>
         <th>OrderTotal</th>
         <th>ShipStatus</th>
-        <th> <a href="checkout.php"> View Details</a></th>
+        <th> <a href="checkout.php"></th>
     </tr>
     <tr>
         <th>OrderDate</th>
         <th>OrderNumber</th>
         <th>OrderTotal</th>
         <th>ShipStatus</th>
-        <th> <a href="checkout.php"> View Details</a> </th>
+        <th> <a href="checkout.php"> </th>
     </tr>
 </table>
 </section>
