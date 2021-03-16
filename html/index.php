@@ -1,5 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+//$conn = new mysqli($hn, $un, $pw, $db);
+//if($conn->connect_error) die($conn->connect_error);
+//
+//$query = "SELECT * FROM products";
+//
+//$result = $conn->query($query);
+//if(!$result) die($conn->error);
+//
+//$rows = $result->num_rows;
+
+echo <<<_END
 <head>
     <meta charset="UTF-8">
     <title>Suburban Outfitters</title>
@@ -7,24 +17,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="/suburbanoutfitters/thirdparty/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../thirdparty/bootstrap/css/bootstrap.min.css">
     <!-- Lightbox-->
-    <link rel="stylesheet" href="/suburbanoutfitters/thirdparty/lightbox2/css/lightbox.min.css">
+    <link rel="stylesheet" href="../thirdparty/lightbox2/css/lightbox.min.css">
     <!-- Range slider-->
-    <link rel="stylesheet" href="/suburbanoutfitters/thirdparty/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="../thirdparty/nouislider/nouislider.min.css">
     <!-- Bootstrap select-->
-    <link rel="stylesheet" href="/suburbanoutfitters/thirdparty/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../thirdparty/bootstrap-select/css/bootstrap-select.min.css">
     <!-- Owl Carousel-->
-    <link rel="stylesheet" href="/suburbanoutfitters/thirdparty/owl.carousel2/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/suburbanoutfitters/thirdparty/owl.carousel2/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../thirdparty/owl.carousel2/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/thirdparty/owl.carousel2/assets/owl.theme.default.css">
     <!-- Google fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/suburbanoutfitters/css/themestyles.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="../css/themestyles.css" id="theme-stylesheet">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="/suburbanoutfitters/img/SUlogo.png">
-    <link rel="stylesheet" href="/suburbanoutfitters/css/loginstyles.css" >
+    <link rel="shortcut icon" href="../img/SUlogo.png">
+    <link rel="stylesheet" href="../css/loginstyles.css" >
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
@@ -70,11 +80,14 @@
                 <h3 class="h5 text-uppercase mb-4">Categories</h3>
             </header>
             <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php"><img class="img-fluid" src="/suburbanoutfitters/img/shirticon.png" alt=""><strong class="category-item-title">Shirts</strong></a></div>
-                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php"><img class="img-fluid" src="/suburbanoutfitters/img/pantsicon.png" alt=""><strong class="category-item-title">Pants</strong></a></div>
-                <div class="col-md-4"><a class="category-item" href="products.php"><img class="img-fluid" src="/suburbanoutfitters/img/shoeicon.png" alt=""><strong class="category-item-title">Shoes</strong></a></div>
+                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php?category=shirts"><img class="img-fluid" src="/suburbanoutfitters/img/shirticon.png" alt=""><strong class="category-item-title">Shirts</strong></a></div>
+                <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php?category=pants""><img class="img-fluid" src="/suburbanoutfitters/img/pantsicon.png" alt=""><strong class="category-item-title">Pants</strong></a></div>
+                <div class="col-md-4"><a class="category-item" href="products.php?category=pants"><img class="img-fluid" src="/suburbanoutfitters/img/shoeicon.png" alt=""><strong class="category-item-title">Shoes</strong></a></div>
             </div>
         </section>
     </div>
 </body>
-</html>
+_END;
+
+
+

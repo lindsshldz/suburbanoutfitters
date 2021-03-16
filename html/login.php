@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Suburban Outfitters</title>
-    <link rel="stylesheet" href="/suburbanoutfitters/css/loginstyles.css" >
+    <link rel="stylesheet" href="../css/loginstyles.css" >
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="/suburbanoutfitters/img/SUlogo.png">
+    <link rel="shortcut icon" href="../img/SUlogo.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
