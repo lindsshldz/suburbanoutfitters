@@ -64,8 +64,8 @@
             <input type="text" id="Last Name" placeholder="Enter Last Name"/>
             <br><br>
 
-            <p>Username</p>
-            <input type="text" id="Email" placeholder="Enter Username" required/>
+            <p>Email</p>
+            <input type="text" id="Email" placeholder="Enter Email" required/>
             <br><br>
 
             <p>Password</p>
@@ -77,25 +77,16 @@
     </fieldset>
 </form>
 <hr>
-<section>
-<h3>Order History</h3>
-<table style="width:80%">
-    <tr>
-        <th>OrderDate</th>
-        <th>OrderNumber</th>
-        <th>OrderTotal</th>
-        <th>ShipStatus</th>
-        <th> <a href="checkout.php"></th>
-    </tr>
-    <tr>
-        <th>OrderDate</th>
-        <th>OrderNumber</th>
-        <th>OrderTotal</th>
-        <th>ShipStatus</th>
-        <th> <a href="checkout.php"> </th>
-    </tr>
-</table>
-</section>
+ <div class="card-body">
+                <h5 class="text-uppercase mb-4">Assisted Order Lists by [username]</this></h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="orderdetails.php"><span>Details</span></a></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="orderdetails.php"><span>Details</span></a></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="orderdetails.php"><span>Details</span></a></li>
+                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="orderdetails.php"><span>Details</span></a></li>
+                    </ul>
+            </div>
+ 
 </div>
 </body>
 </html>
