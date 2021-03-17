@@ -171,9 +171,10 @@ CREATE TABLE IF NOT EXISTS `products` (
 DROP TABLE IF EXISTS `shipping`;
 CREATE TABLE IF NOT EXISTS `shipping` (
   `Shipping ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Payment ID` int NOT NULL,
   `Payment Date` date NOT NULL,
   `Delivery Date` date NOT NULL,
-  `Price` int NOT NULL,
+  `Price` int DEFAULT NULL,
   PRIMARY KEY (`Shipping ID`),
   UNIQUE KEY `Shipping ID` (`Shipping ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
