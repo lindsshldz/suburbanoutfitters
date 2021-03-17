@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `admin account` (
   `last name` varchar(50) NOT NULL,
   `username` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
+  `Img Path` varchar(128) NOT NULL,
   PRIMARY KEY (`Admin ID`),
   UNIQUE KEY `Admin ID` (`Admin ID`),
   UNIQUE KEY `username` (`username`)
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `customer account` (
   `Last Name` varchar(50) NOT NULL,
   `Username` varchar(128) NOT NULL,
   `Password` varchar(128) NOT NULL,
+  `Img Path` varchar(128) NOT NULL,
   PRIMARY KEY (`Customer ID`),
   UNIQUE KEY `Customer ID` (`Customer ID`),
   UNIQUE KEY `username` (`Username`)
@@ -123,7 +125,9 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `Payment ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `Customer ID` int NOT NULL,
   `Order ID` int NOT NULL,
-  `Credit Card Info` char(16) DEFAULT NULL,
+  `Credit Card #` char(16) DEFAULT NULL,
+  `CVV` char(4) DEFAULT NULL,
+  `Expiration Date` varchar(5) DEFAULT NULL,
   `Payment Date` date NOT NULL,
   `Date` date NOT NULL,
   `Payment Status` varchar(256) NOT NULL,
@@ -137,8 +141,8 @@ CREATE TABLE IF NOT EXISTS `payment` (
 -- Table structure for table `product details`
 --
 
-DROP TABLE IF EXISTS `product details`;
-CREATE TABLE IF NOT EXISTS `product details` (
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE IF NOT EXISTS `products` (
   `Product ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `Product Name` varchar(65) NOT NULL,
   `Sell Price` int NOT NULL,
@@ -147,9 +151,10 @@ CREATE TABLE IF NOT EXISTS `product details` (
   `SKU` int NOT NULL,
   `Product Type` varchar(128) NOT NULL,
   `Tags` varchar(128) NOT NULL,
+  `Img Path` varchar(128) NOT NULL,
   PRIMARY KEY (`Product ID`),
   UNIQUE KEY `Product ID` (`Product ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
