@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `suburban outfitters`
 --
-CREATE DATABASE IF NOT EXISTS `suburban outfitters` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `suburban outfitters` DEFAULT CHARACTER SET utf8mb4;
 USE `suburban outfitters`;
 
 -- --------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admin account` (
   PRIMARY KEY (`Admin ID`),
   UNIQUE KEY `Admin ID` (`Admin ID`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `customer account` (
   PRIMARY KEY (`Customer ID`),
   UNIQUE KEY `Customer ID` (`Customer ID`),
   UNIQUE KEY `username` (`Username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `Sell Price` int NOT NULL,
   PRIMARY KEY (`Inventory ID`),
   UNIQUE KEY `Inventory ID` (`Inventory ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `orderlines` (
   `Sell Price` int NOT NULL,
   PRIMARY KEY (`Line ID`),
   UNIQUE KEY `Line ID` (`Line ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `Total Price` int NOT NULL,
   PRIMARY KEY (`Order ID`),
   UNIQUE KEY `Order ID` (`Order ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `Payment Status` varchar(256) NOT NULL,
   PRIMARY KEY (`Payment ID`),
   UNIQUE KEY `Payment ID` (`Payment ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `product details` (
   `Tags` varchar(128) NOT NULL,
   PRIMARY KEY (`Product ID`),
   UNIQUE KEY `Product ID` (`Product ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4
 
 -- --------------------------------------------------------
 
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `shipping` (
   `Price` int NOT NULL,
   PRIMARY KEY (`Shipping ID`),
   UNIQUE KEY `Shipping ID` (`Shipping ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `stores` (
   `Zip` varchar(20) NOT NULL,
   PRIMARY KEY (`Store ID`),
   UNIQUE KEY `Store ID` (`Store ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
