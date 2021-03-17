@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admin account` (
   `Img Path` varchar(128) NOT NULL,
   PRIMARY KEY (`Admin ID`),
   UNIQUE KEY `Admin ID` (`Admin ID`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `Email` (`Email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `customer account` (
   `Img Path` varchar(128) NOT NULL,
   PRIMARY KEY (`Customer ID`),
   UNIQUE KEY `Customer ID` (`Customer ID`),
-  UNIQUE KEY `username` (`Username`)
+  UNIQUE KEY `Email` (`Email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
