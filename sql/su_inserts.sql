@@ -1,5 +1,5 @@
 -- Initial inserts for testing. Data for inventory, orders/lines, payments, shipping should come from web app)
-USE `suburban outfitters`;
+USE `suburban_outfitters`;
 
 INSERT INTO `admins` (`AdminID`, `StoreID`, `firstName`, `lastName`, `email`, `password`) VALUES
 (1, 1, 'Lindsay', 'Shields', 'u0528339@utah.edu', 'pass123'),
