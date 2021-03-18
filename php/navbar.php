@@ -54,9 +54,9 @@ echo <<<_END
                             <!-- Link--><a class="nav-link active" href="index.php">Home</a>
                         </li>
                         </li>
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="proddetails.php">Product detail</a>
-                        </li>
+<!--                        <li class="nav-item">-->
+<!--                            &lt;!&ndash; Link&ndash;&gt;<a class="nav-link" href="proddetails.php">Product detail</a>-->
+<!--                        </li>-->
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>

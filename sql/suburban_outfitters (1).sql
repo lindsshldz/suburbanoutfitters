@@ -49,6 +49,21 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Table structure for table `customer account`
 --
 
+DROP TABLE IF EXISTS `cartItem`;
+CREATE TABLE IF NOT EXISTS `cartItem` (
+    `cartItemID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+    `customerID` int NOT NULL,
+    `productID` int NOT NULL,
+    `cartQty` int NOT NULL
+    PRIMARY KEY (`cartItemID`),
+    UNIQUE KEY `cartItemID` (`cartItemID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `customer account`
+--
+
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE IF NOT EXISTS `customers` (
   `customerID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
