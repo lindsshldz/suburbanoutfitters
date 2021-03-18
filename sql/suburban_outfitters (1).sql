@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `lastName` varchar(50) NOT NULL,
   `email` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `imgPath` varchar(128) NOT NULL,
+  `imgName` varchar(128) NOT NULL,
   PRIMARY KEY (`adminID`),
   UNIQUE KEY `adminID` (`adminID`),
   UNIQUE KEY `email` (`email`)
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `email` varchar(128) NOT NULL,
   `password` varchar(128) NOT NULL,
   `phoneNumber` varchar(25) DEFAULT NULL,
-  `imgPath` varchar(128) NOT NULL,
+  `imgName` varchar(128) NOT NULL,
   PRIMARY KEY (`customerID`),
   UNIQUE KEY `customerID` (`customerID`),
   UNIQUE KEY `email` (`email`)
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `sku` int NOT NULL,
   `category` varchar(128) NOT NULL,
   `tags` varchar(128) NOT NULL,
-  `imgPath` varchar(128) NOT NULL,
+  `imgName` varchar(128) NOT NULL,
   PRIMARY KEY (`productID`),
   UNIQUE KEY `productID` (`productID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;

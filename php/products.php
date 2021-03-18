@@ -81,16 +81,19 @@ for($j=0; $j<$rows; ++$j) {
                         <div class="col-lg-4 col-sm-6">
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
-                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.php=$product[productID]"><img class="img-fluid w-100" src="/suburbanoutfitters/img/redshirt.png" alt="Red Shirt"></a>
+                                    <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.php=$product[productID]"><img class="img-fluid w-100" src="img/$product[imgPath]"></a>
                                     <div class="product-overlay">
                                         <ul class="mb-0 list-inline">
                                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <h6> <a class="reset-anchor" href="detail.html">Red T-Shirt</a></h6>
-                                <p class="small text-muted">$25</p>
+                                <h6> <a class="reset-anchor" href="detail.html">$product[productName]</a></h6>
+                                <p class="small text-muted">$$product[sellPrice]</p>
                             </div>
+_END;
+}
+echo <<<_END
                         </div>
                     </div>
                 </div>
@@ -100,4 +103,3 @@ for($j=0; $j<$rows; ++$j) {
 </div>
 </body>
 _END;
-}
