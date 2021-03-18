@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `Sell Price` int NOT NULL,
   `Product Description` varchar(256) NOT NULL,
   `SKU` int NOT NULL,
-  `Product Type` varchar(128) NOT NULL,
+  `Category` varchar(128) NOT NULL,
   `Tags` varchar(128) NOT NULL,
   `Img Path` varchar(128) NOT NULL,
   PRIMARY KEY (`Product ID`),

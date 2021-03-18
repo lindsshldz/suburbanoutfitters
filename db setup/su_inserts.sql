@@ -1,4 +1,5 @@
 -- Initial inserts for testing. Data for inventory, orders/lines, payments, shipping should come from web app)
+USE `suburban outfitters`;
 
 INSERT INTO `admin account` (`Admin ID`, `Store ID`, `first name`, `last name`, `Email`, `password`) VALUES
 (1, 1, 'Lindsay', 'Shields', 'u0528339@utah.edu', 'pass123'),
@@ -6,7 +7,7 @@ INSERT INTO `admin account` (`Admin ID`, `Store ID`, `first name`, `last name`, 
 (3, 1, 'Smith', 'Mainoo', 'u5678@utah.edu', 'pass789');
 
 INSERT INTO `customer account` (`Customer ID`, `First Name`, `Last Name`, `Email`, `Password`, `Phone Number`) VALUES
-(1, 'Britt', 'Calvimonte', 'bcalvi@xyz.com', 'cust123', '(801)555-1234')
+(1, 'Britt', 'Calvimonte', 'bcalvi@xyz.com', 'cust123', '(801)555-1234'),
 (2, 'Jane', 'Doe', 'jane@abc.com', 'cust456', '(435)111-2222'),
 (3, 'Troy', 'Shields', 'tls@email.com', 'cust789', '(858)585-8585');
 
