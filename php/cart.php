@@ -2,6 +2,47 @@
 require_once 'dblogin.php';
 include 'navbar.php';
 
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$customerID = 1;
+
+if (isset($_POST['cartQty'])) {
+    $productID = $_POST['productID'];
+    $cartQty = $_POST['cartQty'];
+
+    $query = "SELECT cartQty FROM cartItem WHERE productID = '$productID' AND customerID = '$customerID'";
+
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if (count($row) == 0) {
+        $query = "INSERT INTO cartItem (customerID, productID, cartQty) VALUES 
+              ('$customerID', '$productID', '$cartQty')";
+    }else {
+        $cartQty = $cartQty + $row['cartQty'];
+        $query = "UPDATE cartItem SET cartQty = '$cartQty' WHERE productID = $productID";
+    }
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+
+    header("Location: cart.php");
+}
+
+$query = "SELECT products.imgName, products.productName, products.sellPrice, cartItem.cartQty FROM products INNER JOIN cartItem ON
+          products.productID = cartItem.productID WHERE customerID = '$customerID'";
+
+$result = $conn->query($query);
+if(!$result) die($conn->error);
+
+$cart_data = array();
+
+$rows = $result->num_rows;
+for($j=0; $j<$rows; ++$j) {
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    array_push($cart_data, $row);
+}
 echo <<<_END
     <div class="container">
         <!-- HERO SECTION-->
@@ -39,52 +80,53 @@ echo <<<_END
                             </tr>
                             </thead>
                             <tbody>
+_END;
+$subtotal = 0;
+$products = array();
+for($j=0; $j<$rows; ++$j) {
+    $item = $cart_data[$j];
+
+    $img = $item['imgName'];
+    $prodName = $item['productName'];
+    $price = $item['sellPrice'];
+    $qty = $item['cartQty'];
+    $prodTotal = $price * $qty;
+
+    $subtotal += $prodTotal;
+
+    echo <<<_END
                             <tr>
                                 <th class="pl-0 border-0" scope="row">
-                                    <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/redshirt.png" alt="..." width="70"/></a>
-                                        <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">Red T-Shirt</a></strong></div>
+                                    <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/$img" alt="..." width="70"/></a>
+                                        <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">$prodName</a></strong></div>
                                     </div>
                                 </th>
                                 <td class="align-middle border-0">
-                                    <p class="mb-0 small">$25</p>
+                                    <p class="mb-0 small">$$price</p>
                                 </td>
                                 <td class="align-middle border-0">
                                     <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
                                         <div class="quantity">
-                                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="1"/>
-                                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                                            <button type="button "class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
+                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="$qty"/>
+                                            <button type="button" class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="align-middle border-0">
-                                    <p class="mb-0 small">$25</p>
+                                    <p class="mb-0 small">$$prodTotal</p>
                                 </td>
                                 <td class="align-middle border-0"><a class="reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
                             </tr>
-                            <tr>
-                                <th class="pl-0 border-light" scope="row">
-                                    <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/purplepants.png" alt="..." width="70"/></a>
-                                        <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">Purple Pants</a></strong></div>
-                                    </div>
-                                </th>
-                                <td class="align-middle border-light">
-                                    <p class="mb-0 small">$50</p>
-                                </td>
-                                <td class="align-middle border-light">
-                                    <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
-                                        <div class="quantity">
-                                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="1"/>
-                                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="align-middle border-light">
-                                    <p class="mb-0 small">$50</p>
-                                </td>
-                                <td class="align-middle border-light"><a class="reset-anchor" href="#"><i class="fas fa-trash-alt small text-muted"></i></a></td>
-                            </tr>
+_END;
+}
+
+$tax = $subtotal * 0.047;
+$tax = sprintf("%01.2f", $tax);
+$total = $subtotal + $tax;
+$total = sprintf("%01.2f", $total);
+echo <<<_END
+
                             </tbody>
                         </table>
                     </div>
@@ -95,10 +137,10 @@ echo <<<_END
                         <div class="card-body">
                             <h5 class="text-uppercase mb-4">Cart total</h5>
                             <ul class="list-unstyled mb-0">
-                                <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$75</span></li>
-                                <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$6.37</span></li>
+                                <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$$subtotal</span></li>
+                                <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$$tax</span></li>
                                 <li class="border-bottom my-2"></li>
-                                <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$81.37</span></li>
+                                <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$$total</span></li>
                                 <li>
                                     <form action="#">
                                         <div class="form-group mb-0">
@@ -113,6 +155,13 @@ echo <<<_END
                 </div>
             </div>
         </section>
+_END;
+$custQuery = "SELECT * FROM customers WHERE customerID = '$customerID'";
+
+$custResult = $conn->query($custQuery);
+if(!$custResult) die($conn->error);
+$customer = $custResult->fetch_array(MYSQLI_ASSOC);
+echo <<<_END
         <section class="py-5">
             <h2 class="h5 text-uppercase mb-4">Checkout Your Cart</h2>
             <div class="row">
@@ -121,44 +170,44 @@ echo <<<_END
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <label class="text-small text-uppercase" for="firstName">First name</label>
-                                <input class="form-control form-control-lg" id="firstName" type="text" placeholder="Enter your first name">
+                                <input class="form-control form-control-lg" id="firstName" type="text" name="firstName" value="$customer[firstName]" placeholder="Enter your first name">
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label class="text-small text-uppercase" for="lastName">Last name</label>
-                                <input class="form-control form-control-lg" id="lastName" type="text" placeholder="Enter your last name">
+                                <input class="form-control form-control-lg" id="lastName" type="text" name="lastName" value="$customer[lastName]" placeholder="Enter your last name">
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label class="text-small text-uppercase" for="email">Email address</label>
-                                <input class="form-control form-control-lg" id="email" type="email" placeholder="e.g. Jason@example.com">
+                                <input class="form-control form-control-lg" id="email" type="email" name="email" value="$customer[email]"placeholder="e.g. Jason@example.com">
                             </div>
                             <div class="col-lg-6 form-group">
                                 <label class="text-small text-uppercase" for="phone">Phone number</label>
-                                <input class="form-control form-control-lg" id="phone" type="tel" placeholder="e.g. +02 245354745">
+                                <input class="form-control form-control-lg" id="phone" type="tel" name="phoneNumber" value="$customer[phoneNumber]"placeholder="e.g. +02 245354745">
                             </div>
                             <div class="col-lg-12 form-group">
                                 <label class="text-small text-uppercase" for="address">Shipping Address line 1</label>
-                                <input class="form-control form-control-lg" id="address" type="text" placeholder="House number and street name">
+                                <input class="form-control form-control-lg" id="address" type="text" name="address1" placeholder="House number and street name">
                             </div>
                             <div class="col-lg-12 form-group">
                                 <label class="text-small text-uppercase" for="address">Shipping Address line 2</label>
-                                <input class="form-control form-control-lg" id="addressalt" type="text" placeholder="Apartment, Suite, Unit, etc (optional)">
+                                <input class="form-control form-control-lg" id="addressalt" type="text" name="address2" placeholder="Apartment, Suite, Unit, etc (optional)">
                             </div>
                             <div class="col-lg-4 form-group">
                                 <label class="text-small text-uppercase" for="city">City</label>
-                                <input class="form-control form-control-lg" id="city" type="text">
+                                <input class="form-control form-control-lg" id="city" type="text" name="city">
                             </div>
                             <div class="col-lg-4 form-group">
                                 <label class="text-small text-uppercase" for="state">State</label>
-                                <input class="form-control form-control-lg" id="state" type="text">
+                                <input class="form-control form-control-lg" id="state" type="text" name="state">
                             </div>
                             <div class="col-lg-4 form-group">
                                 <label class="text-small text-uppercase" for="zip">Zip Code</label>
-                                <input class="form-control form-control-lg" id="zip" type="text">
+                                <input class="form-control form-control-lg" id="zip" type="text" name="zipCode">
                             </div>
                             <div class="col-lg-12 form-group">
                                 <label class="text-small text-uppercase">Credit Card Number</label>
                                 <div class="input-group">
-                                    <input type="text" name="cardNumber" placeholder="Your card number" class="form-control" required>
+                                    <input type="text" name="creditCard#" placeholder="Your card number" class="form-control" required>
                                     <div class="input-group-append"> <span class="input-group-text text-muted">
                                                     <i class="fab fa-cc-visa mx-1"></i>
                                                     <i class="fab fa-cc-amex mx-1"></i>
@@ -169,14 +218,14 @@ echo <<<_END
                             <div class="col-lg-8 form-group">
                                 <label class="text-small text-uppercase"><span class="hidden-xs">Expiration</span></label>
                                 <div class="input-group">
-                                    <input type="number" placeholder="MM" name="" class="form-control" required>
-                                    <input type="number" placeholder="YY" name="" class="form-control" required>
+                                    <input type="number" placeholder="MM" name="expMonth" class="form-control" required>
+                                    <input type="number" placeholder="YY" name="expYear" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group mb-4">
                                     <label class="text-small text-uppercase">CVV</label>
-                                    <input type="text" required class="form-control">
+                                    <input type="text" name="cvv" required class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-12 form-group">
@@ -190,3 +239,4 @@ echo <<<_END
     </div>
     </body>
 _END;
+

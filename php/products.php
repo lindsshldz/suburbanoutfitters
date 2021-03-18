@@ -19,7 +19,7 @@ if(!$result) die($conn->error);
 $rows = $result->num_rows;
 $product_data = array();
 
-// create an array of card data
+// create an array of product data
 for($j=0; $j<$rows; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
     array_push($product_data, $row);

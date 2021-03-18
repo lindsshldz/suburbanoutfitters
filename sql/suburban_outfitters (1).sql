@@ -149,9 +149,9 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `zipCode`varchar(25) DEFAULT NULL,
   `creditCard#` char(16) DEFAULT NULL,
   `cvv` char(4) DEFAULT NULL,
-  `expirationDate` varchar(5) DEFAULT NULL,
+  `expMonth` char(2) DEFAULT NULL,
+  `expYear` char(2) DEFAULT NULL,
   `paymentDate` date NOT NULL,
-  `date` date NOT NULL,
   `paymentStatus` varchar(256) NOT NULL,
   PRIMARY KEY (`paymentID`),
   UNIQUE KEY `paymentID` (`paymentID`)

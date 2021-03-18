@@ -12,6 +12,8 @@ if(!$result) die($conn->error);
 
 $conn->close();
 
+$customerID = 1;
+
 //HTML
 echo <<<_END
 <head>

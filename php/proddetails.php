@@ -10,6 +10,8 @@ $result = $conn->query($query);
 if(!$result) die($conn->error);
 
 $row = $result->fetch_array(MYSQLI_ASSOC);
+
+
 $conn->close();
 
 $image = $row[imgName];
@@ -41,18 +43,22 @@ echo <<<_END
                 <h1>$row[productName]</h1>
                 <p class="text-muted lead">$$row[sellPrice]</p>
                 <p class="text-small mb-4">$row[productDescription]</p>
-                <form method="post" action="proddetails.php">
+                <form method="post" action="cart.php">
+                    <input type="hidden" name="productID" value="$row[productID]">
+                    <input type="hidden" name="customerID" value="1">
                     <div class="row align-items-stretch mb-4">
                         <div class="col-sm-5 pr-sm-0">
                             <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
                                 <div class="quantity">
-                                    <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                    <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
-                                    <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
+                                    <button class="dec-btn p-0" type="button"><i class="fas fa-caret-left"></i></button>
+                                    <input class="form-control border-0 shadow-0 p-0" type="text" value="1"name="cartQty">
+                                    <button class="inc-btn p-0" type="button"><i class="fas fa-caret-right" type="button"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3 pl-sm-0"><input class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" type="submit" value="Add to cart"></div>
+                        <div class="col-sm-3 pl-sm-0">
+                            <input class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" type="submit" value="Add to cart">
+                        </div>
                     </div>
                 </form>
                 <ul class="list-unstyled small d-inline-block">

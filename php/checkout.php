@@ -1,5 +1,35 @@
 <?php
-include('navbar.php');
+require_once 'dblogin.php';
+include 'navbar.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$customerID = 1;
+
+if (isset($_POST['cvv'])) {
+    $firstName = $_POST[];
+
+
+
+    $query = "SELECT cartQty FROM cartItem WHERE productID = '$productID' AND customerID = '$customerID'";
+
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+
+    if (count($row) == 0) {
+        $query = "INSERT INTO cartItem (customerID, productID, cartQty) VALUES 
+              ('$customerID', '$productID', '$cartQty')";
+    }else {
+        $cartQty = $cartQty + $row['cartQty'];
+        $query = "UPDATE cartItem SET cartQty = '$cartQty' WHERE productID = $productID";
+    }
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+
+    header("Location: cart.php");
+}
 echo <<<_END
 <div class="container">
     <!-- HERO SECTION-->
