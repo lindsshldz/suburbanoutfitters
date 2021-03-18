@@ -832,7 +832,7 @@
         }
       }
     };
-    // If we have no title yet, try to pull it from the html title attribute (jQuery doesnt' pick it up as it's not a
+    // If we have no title yet, try to pull it from the php title attribute (jQuery doesnt' pick it up as it's not a
     // data-attribute)
     if (this.options.title === null) {
       this.options.title = this.$element.attr('title');

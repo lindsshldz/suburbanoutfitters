@@ -1,14 +1,18 @@
 <?php
-//$conn = new mysqli($hn, $un, $pw, $db);
-//if($conn->connect_error) die($conn->connect_error);
-//
-//$query = "SELECT * FROM products";
-//
-//$result = $conn->query($query);
-//if(!$result) die($conn->error);
-//
-//$rows = $result->num_rows;
+require_once 'dblogin.php';
 
+//Connect to database
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$query = "SELECT * FROM products";
+
+$result = $conn->query($query);
+if(!$result) die($conn->error);
+
+$conn->close();
+
+//HTML
 echo <<<_END
 <head>
     <meta charset="UTF-8">

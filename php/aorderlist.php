@@ -81,7 +81,7 @@
                     <p>Pending</p>
                 </div>
                 <div class="col-sm-4">
-                    <a href="/suburbanoutfitters/html/aorderdetails.php"><input type="submit" value="Details"></a>
+                    <a href="/suburbanoutfitters/php/aorderdetails.php"><input type="submit" value="Details"></a>
                 </div>
             </div>
             <div class="row">
@@ -92,7 +92,7 @@
                     <p>Pending</p>
                 </div>
                 <div class="col-sm-4">
-                    <a href="/suburbanoutfitters/html/aorderdetails.php"><input type="submit" value="Details"></a>
+                    <a href="/suburbanoutfitters/php/aorderdetails.php"><input type="submit" value="Details"></a>
                 </div>
             </div>
         </div>

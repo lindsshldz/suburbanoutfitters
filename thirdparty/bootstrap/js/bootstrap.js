@@ -2801,7 +2801,7 @@
     }
 
     var domParser = new window.DOMParser();
-    var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
+    var createdDocument = domParser.parseFromString(unsafeHtml, 'text/php');
     var whitelistKeys = Object.keys(whiteList);
     var elements = [].slice.call(createdDocument.body.querySelectorAll('*'));
 
@@ -3633,7 +3633,7 @@
     };
 
     _proto.setContent = function setContent() {
-      var $tip = $(this.getTipElement()); // We use append for html objects to maintain js events
+      var $tip = $(this.getTipElement()); // We use append for php objects to maintain js events
 
       this.setElementContent($tip.find(Selector$7.TITLE), this.getTitle());
 

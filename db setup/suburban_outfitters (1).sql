@@ -32,6 +32,7 @@ USE `suburban outfitters`;
 DROP TABLE IF EXISTS `admin account`;
 CREATE TABLE IF NOT EXISTS `admin account` (
   `Admin ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Store ID` int NOT NULL,
   `first name` varchar(35) NOT NULL,
   `last name` varchar(50) NOT NULL,
   `Email` varchar(128) NOT NULL,
@@ -153,7 +154,6 @@ CREATE TABLE IF NOT EXISTS `products` (
   `Product Name` varchar(65) NOT NULL,
   `Sell Price` int NOT NULL,
   `Product Description` varchar(256) NOT NULL,
-  `Product Quantity` int NOT NULL,
   `SKU` int NOT NULL,
   `Product Type` varchar(128) NOT NULL,
   `Tags` varchar(128) NOT NULL,

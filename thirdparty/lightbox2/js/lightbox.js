@@ -56,7 +56,7 @@
     /*
     Sanitize Title
     If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
-    This will free you to add html tags, such as links, in the caption.
+    This will free you to add php tags, such as links, in the caption.
 
     If the caption data is user submitted or from some other untrusted source, then set this to true
     to prevent xss and other injection attacks.
@@ -91,7 +91,7 @@
     });
   };
 
-  // Build html for the lightbox and the overlay.
+  // Build php for the lightbox and the overlay.
   // Attach event handlers to the new DOM elements. click click click
   Lightbox.prototype.build = function() {
     if ($('#lightbox').length > 0) {
@@ -469,7 +469,7 @@
   Lightbox.prototype.updateDetails = function() {
     var self = this;
 
-    // Enable anchor clicks in the injected caption html.
+    // Enable anchor clicks in the injected caption php.
     // Thanks Nate Wright for the fix. @https://github.com/NateWr
     if (typeof this.album[this.currentImageIndex].title !== 'undefined' &&
       this.album[this.currentImageIndex].title !== '') {

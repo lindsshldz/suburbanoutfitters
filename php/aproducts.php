@@ -175,7 +175,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <h6> <a class="reset-anchor" href="/suburbanoutfitters/html/aproddetails.php">Pink Shoes</a></h6>
+                                <h6> <a class="reset-anchor" href="/suburbanoutfitters/php/aproddetails.php">Pink Shoes</a></h6>
                                 <p class="small text-muted">$75</p>
                             </div>
                         </div>

@@ -41,12 +41,12 @@
                         </li>
                         </li>
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="/suburbanoutfitters/html/proddetails.php">Product detail</a>
+                            <!-- Link--><a class="nav-link" href="/suburbanoutfitters/php/proddetails.php">Product detail</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="/suburbanoutfitters/html/login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/suburbanoutfitters/php/login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
                     </ul>
                 </div>
             </nav>
