@@ -14,8 +14,8 @@ $row = $result->fetch_array(MYSQLI_ASSOC);
 
 $conn->close();
 
-$image = $row[imgName];
-$thumbnail = $row[imgThumbnail];
+$image = $row['imgName'];
+$thumbnail = $row['imgThumbnail'];
 
 include('navbar.php');
 echo <<<_END
@@ -51,7 +51,7 @@ echo <<<_END
                             <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
                                 <div class="quantity">
                                     <button class="dec-btn p-0" type="button"><i class="fas fa-caret-left"></i></button>
-                                    <input class="form-control border-0 shadow-0 p-0" type="text" value="1"name="cartQty">
+                                    <input class="form-control border-0 shadow-0 p-0" type="text" value="1" name="cartQty">
                                     <button class="inc-btn p-0" type="button"><i class="fas fa-caret-right" type="button"></i></button>
                                 </div>
                             </div>
