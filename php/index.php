@@ -1,5 +1,7 @@
 <?php
-include('navbar.php');
+$page_roles = array('admin','customer');
+require_once 'checksession.php';
+include 'custnavbar.php';
 echo <<<_END
     <!-- HERO SECTION-->
     <div class="container">
@@ -20,12 +22,13 @@ echo <<<_END
             <div class="row">
                 <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php?category=shirts"><img class="img-fluid" src="/suburbanoutfitters/img/shirticon.png" alt=""><strong class="category-item-title">Shirts</strong></a></div>
                 <div class="col-md-4 mb-4 mb-md-0"><a class="category-item" href="products.php?category=pants""><img class="img-fluid" src="/suburbanoutfitters/img/pantsicon.png" alt=""><strong class="category-item-title">Pants</strong></a></div>
-                <div class="col-md-4"><a class="category-item" href="products.php?category=pants"><img class="img-fluid" src="/suburbanoutfitters/img/shoeicon.png" alt=""><strong class="category-item-title">Shoes</strong></a></div>
+                <div class="col-md-4"><a class="category-item" href="products.php?category=shoes"><img class="img-fluid" src="/suburbanoutfitters/img/shoeicon.png" alt=""><strong class="category-item-title">Shoes</strong></a></div>
             </div>
         </section>
     </div>
 </body>
 _END;
+
 
 
 

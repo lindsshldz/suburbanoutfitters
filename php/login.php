@@ -22,9 +22,9 @@
                     <div class="loginmodal-container" style="background: url(binding_dark.png)repeat fixed;color: black;">
                         <img src="/suburbanoutfitters/img/SUlogo.png"><br>
                         <h3 style="text-align: center">Suburban Outfitters</h3><br>
-                        <form action="index.php" method="post">
-                            <input type="text" name="uname" placeholder="Username" autocomplete="off" required>
-                            <input type="password" name="upass" placeholder="Password" autocomplete="off" required>
+                        <form action="login.php" method="post">
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" required>
+                            <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                             <input type="submit" name="login" class="login loginmodal-submit" value="Login" style="background-color:#80b2f0;">
                         </form>
                         <a href="adminacct.php">Temporary Admin Acct Link</a> <a href="custacct.php">Temporary Customer Acct Link</a>
@@ -33,8 +33,6 @@
             </div>
         </div>
     </div>
-
 </div>
-
 </body>
 </html>

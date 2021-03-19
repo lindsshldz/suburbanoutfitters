@@ -1,5 +1,76 @@
 <?php
-include('navbar.php');
+include 'custnavbar.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+if (isset($_POST['cvv'])) {
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    $phoneNumber = $_POST['phoneNumber'];
+
+    $address1 = $_POST['address1'];
+    $address2 = $_POST['address2'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zipCode = $_POST['zipCode'];
+    $creditCard = $_POST['creditCard'];
+    $expMonth = $_POST['expMonth'];
+    $expYear = $_POST['expYear'];
+    $cvv = $_POST['cvv'];
+
+    $total = $_POST['total'];
+
+    $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total' ";
+    $orderResult = $conn->query($orderQuery);
+    if(!$orderResult) die($conn->error);
+    $orderID = $conn->insert_id;
+
+    $cartQuery = "SELECT products.sellPrice, cartItem.productID, cartItem.cartQty FROM products INNER JOIN cartItem ON
+                  products.productID = cartItem.productID WHERE userID = '$userID'";
+    $cartResult = $conn->query($cartQuery);
+    if(!$cartResult) die($conn->error);
+    $rows = $cartResult->num_rows;
+    for($j=0; $j<$rows; ++$j) {
+        $row = $cartResult->fetch_array(MYSQLI_ASSOC);
+        $lineQuery = "INSERT INTO orderlines SET productID='$row[productID]', orderID='$orderID', 
+                  quantity='$row[cartQty]', sellPrice='$row[sellPrice]'";
+        $lineResult = $conn->query($lineQuery);
+        if (!$lineResult) die($conn->error);
+    }
+    $custQuery = "UPDATE users SET firstName='$firstName', lastName='$lastName', email='$email', phoneNumber='$phoneNumber'
+                  WHERE userID = '$userID'";
+    $custResult = $conn->query($custQuery);
+    if(!$custResult) die($conn->error);
+
+    $paymentQuery = "INSERT INTO payment SET userID='$userID', orderID='$orderID', address1='$address1', address2='$address2', city='$city', state='$state',
+                     zipCode='$zipCode', creditCard='$creditCard', expMonth='$expMonth', expYear='$expYear', cvv=$cvv, paymentDate=CURDATE()";
+    $paymentResult = $conn->query($paymentQuery);
+    if(!$paymentResult) die($conn->error);
+
+    $emptyCart = "DELETE FROM cartItem WHERE userID = '$userID'";
+    $emptyResult = $conn->query($emptyCart);
+    if(!$emptyResult) die($conn->error);
+
+    header("Location: checkout.php?orderID=$orderID");
+
+}
+
+$orderID = $_GET['orderID'];
+
+$query = "SELECT orders.orderID, orders.orderDate, orders.totalPrice, orderlines.quantity, orderlines.sellPrice,
+          orderlines.productID, products.productName, products.imgName FROM orders INNER JOIN orderlines on orders.orderID = 
+          orderlines.orderID INNER JOIN products on orderlines.productID = products.productID where orders.orderID='$orderID'";
+$result = $conn->query($query);
+if(!$result) die($conn->error);
+
+$orderData = array();
+$rows = $result->num_rows;
+for($j=0; $j<$rows; ++$j) {
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    array_push($orderData, $row);
+}
 echo <<<_END
 <div class="container">
     <!-- HERO SECTION-->
@@ -21,7 +92,7 @@ echo <<<_END
         </div>
     </section>
     <section class="py-5">
-        <h2 class="h5 text-uppercase mb-4">Order Number: 123456789 </h2>
+        <h2 class="h5 text-uppercase mb-4">Order Number: $orderID</h2>
         <div class="row">
             <div class="col-lg-8 mb-4 mb-lg-0">
                 <!-- ORDER TABLE-->
@@ -37,38 +108,38 @@ echo <<<_END
                         </tr>
                         </thead>
                         <tbody>
+_END;
+$subtotal = 0;
+for($j=0; $j<$rows; ++$j) {
+    $orderline = $orderData[$j];
+    $prodTotal = $orderline['sellPrice'] * $orderline['quantity'];
+    $subtotal += $prodTotal;
+
+    echo <<<_END
                         <tr>
                             <th class="pl-0 border-0" scope="row">
-                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/redshirt.png" alt="..." width="70"/></a>
-                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">Red T-Shirt</a></strong></div>
+                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php?productID=$orderline[productID]">
+                                    <img src="/suburbanoutfitters/img/$orderline[imgName]" alt="..." width="70"/></a>
+                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php?productID=$orderline[productID]">$orderline[productName]</a></strong></div>
                                 </div>
                             </th>
                             <td class="align-middle border-0">
-                                <p class="mb-0 small">$25</p>
+                                <p class="mb-0 small">$orderline[sellPrice]</p>
                             </td>
                             <td class="align-middle border-light">
-                                <div class="quantity">1</div>
+                                <div class="quantity">$orderline[quantity]</div>
                             </td>
                             <td class="align-middle border-0">
-                                <p class="mb-0 small">$25</p>
+                                <p class="mb-0 small">$prodTotal</p>
                             </td>
                         </tr>
-                        <tr>
-                            <th class="pl-0 border-light" scope="row">
-                                <div class="media align-items-center"><a class="reset-anchor d-block animsition-link" href="proddetails.php"><img src="/suburbanoutfitters/img/purplepants.png" alt="..." width="70"/></a>
-                                    <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link" href="proddetails.php">Purple Pants</a></strong></div>
-                                </div>
-                            </th>
-                            <td class="align-middle border-light">
-                                <p class="mb-0 small">$50</p>
-                            </td>
-                            <td class="align-middle border-light">
-                                <div class="quantity">1</div>
-                            </td>
-                            <td class="align-middle border-light">
-                                <p class="mb-0 small">$50</p>
-                            </td>
-                        </tr>
+_END;
+}
+$tax = $subtotal * 0.047;
+$tax = sprintf("%01.2f", $tax);
+$total = $subtotal + $tax;
+$total = sprintf("%01.2f", $total);
+echo <<<_END
                         </tbody>
                     </table>
                 </div>
@@ -79,16 +150,24 @@ echo <<<_END
                     <div class="card-body">
                         <h5 class="text-uppercase mb-4">Order total</h5>
                         <ul class="list-unstyled mb-0">
-                            <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$75</span></li>
-                            <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$6.37</span></li>
+                            <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$$subtotal</span></li>
+                            <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$$tax</span></li>
                             <li class="border-bottom my-2"></li>
-                            <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$81.37</span></li>
+                            <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$$total</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+_END;
+
+$shippingQuery = "SELECT * FROM payment WHERE orderID='$orderID'";
+$shippingResult = $conn->query($shippingQuery);
+if(!$shippingResult) die($conn->error);
+$row = $shippingResult->fetch_array(MYSQLI_ASSOC);
+
+echo <<<_END
     <section class="py-5">
         <h2 class="h5 text-uppercase mb-4">Shipping Details</h2>
         <div class="row">
@@ -107,7 +186,7 @@ echo <<<_END
                     <tr>
                         <th class="pl-0 border-0" scope="row">
                             <div class="media align-items-center"><a width="70"/></a>
-                                <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link">123 S. Easy Street, Salt Lake City, UT 84111</a></strong></div>
+                                <div class="media-body ml-3"><strong class="h6"><a class="reset-anchor animsition-link">$row[address1]</a></strong></div>
                             </div>
                         </th>
                         <td class="align-middle border-0">
