@@ -65,12 +65,11 @@ $conn->close();
                 <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                     <div class="row mb-3 align-items-center">
                         <div class="col-lg-6 mb-2 mb-lg-0">
-                            <p class="text-small text-muted mb-0">Showing 1-6 of 6 results</p>
+                            <p class="text-small text-muted mb-0"></p>
                         </div>
                         <div class="col-lg-6">
                             <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-                                <li class="list-inline-item text-muted mr-3"><a class="reset-anchor p-0" href="#"><i class="fas fa-th-large"></i></a></li>
-                                <li class="list-inline-item text-muted mr-3"><a class="reset-anchor p-0" href="#"><i class="fas fa-th"></i></a></li>
+                                
                                 <li class="list-inline-item">
                                     <select class="selectpicker ml-auto" name="sorting" data-width="200" data-style="bs-select-form-control" data-title="Default sorting">
                                         <option value="default">Default sorting</option>
@@ -91,11 +90,6 @@ for($j=0; $j<$rows; ++$j) {
                             <div class="product text-center">
                                 <div class="mb-3 position-relative">
                                     <div class="badge text-white badge-"></div><a class="d-block" href="proddetails.php?productID=$product[productID]"><img class="img-fluid w-100" src="/suburbanoutfitters/img/$product[imgName]"></a>
-                                    <div class="product-overlay">
-                                        <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.php">Add to cart</a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <h6> <a class="reset-anchor" href="detail.html">$product[productName]</a></h6>
                                 <p class="small text-muted">$$product[sellPrice]</p>

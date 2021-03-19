@@ -57,7 +57,7 @@ echo <<<_END
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i><small>Cart</small><small class="text-gray">(2)</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i><small>Cart</small></a></li>
 _END;
 if($userID == 0) {
     echo <<<_END
