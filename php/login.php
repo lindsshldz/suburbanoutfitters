@@ -67,7 +67,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
 
     //Compare passwords
-    if($password == $passwordFromDB)
+    if(password_verify($password,$passwordFromDB))
     {
         echo "successful login<br>";
 

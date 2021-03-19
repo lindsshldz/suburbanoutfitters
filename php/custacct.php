@@ -63,14 +63,9 @@ echo <<<_END
                         <p>Email</p>
                         <input type="text" id="email" value="$row[email]" name="email" placeholder="Enter Username" required/>
                         <br><br>
-                        
+                      
                         <p>Phone Number</p>
                         <input type="text" id="phoneNumber" value="$row[phoneNumber]" name="phoneNumber" placeholder="Enter Phone" required/>
-                        <br><br>
-            
-                        <p>Password</p>
-                        <input type="password" id="password" name="password" value="$row[password]" placeholder="Enter Password" required/>
-            
                         <br><br>
             
                         <input type="Submit" name="submit" value="Submit Changes" />
