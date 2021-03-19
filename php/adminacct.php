@@ -1,3 +1,30 @@
+<?php
+
+require_once 'dblogin.php';
+//create connection
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+$username = "";
+$firstName = "";
+$lastName = "";
+
+
+$query = "SELECT * from admins where email='u5678@utah.edu'";
+
+$result = $conn->query($query);
+if(!$result) die($conn->error);
+
+$rows = $result->num_rows;
+for($i = 0; $i < $rows; $i++){
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $username = $row['email'];
+    $firstName = $row['firstName'];
+    $lastName = $row['lastName'];
+}
+
+
+echo <<<_END
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,7 +68,7 @@
                             
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Logged in  As Admin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>$username</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -62,13 +89,11 @@
                             <p>First Name:</p>
                             <p>Last Name:</p>
                             <p>Username:</p>
-                            <p>Password:</p>
                         </div>
                         <div class="col-sm-8">
-                            <p>First Name</p>
-                            <p>Last Name</p>
-                            <p>Username</p>
-                            <p>Password</p>
+                           <p>$firstName</p>
+                            <p>$lastName</p>
+                            <p>$username</p>
                         </div>
                     </div>
                     
@@ -78,12 +103,29 @@
             <input type="file" value="update photo">
             <div class="border-bottom my-2"></div>
             <div class="card-body">
-                <h5 class="text-uppercase mb-4">Assisted Order Lists by [username]</this></h5>
+                <h5 class="text-uppercase mb-4">Assisted Order Lists by: $username</this></h5>
                     <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
-                        <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: 123456</strong><a href="aorderdetails.php"><span>Details</span></a></li>
+_END;
+
+
+$order_number = "";
+//order query
+$order_query = "SELECT * from orders";
+$order_result = $conn->query($order_query);
+if(!$order_query) die($conn->error);
+
+$orders = $order_result->num_rows;
+for($j = 0; $j< $orders; $j++){
+   $order = $order_result->fetch_array(MYSQLI_ASSOC);
+   $order_number = $order['orderID'];
+//loop for orders
+echo <<<_END
+                <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: $order_number</strong><a href="aorderdetails.php"><span>Details</span></a></li>
+_END; 
+}
+
+echo <<<_END
+
                     </ul>
             </div>
                 <div class="col-lg-12 form-group" style="text-align: center">
@@ -98,3 +140,8 @@
     
 </body>
 </html>
+_END;
+
+
+
+?>
