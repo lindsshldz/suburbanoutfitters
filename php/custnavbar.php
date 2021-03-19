@@ -1,5 +1,8 @@
 <?php
+$page_roles = array('admin','customer');
+
 require_once 'dblogin.php';
+require_once 'checksession.php';
 
 //Connect to database
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -9,10 +12,6 @@ $query = "SELECT * FROM products";
 
 $result = $conn->query($query);
 if(!$result) die($conn->error);
-
-$conn->close();
-
-$customerID = 1;
 
 //HTML
 echo <<<_END
@@ -53,16 +52,24 @@ echo <<<_END
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link active" href="index.php">Home</a>
+                            <a class="nav-link active" href="index.php">Home</a>
                         </li>
                         </li>
-<!--                        <li class="nav-item">-->
-<!--                            &lt;!&ndash; Link&ndash;&gt;<a class="nav-link" href="proddetails.php">Product detail</a>-->
-<!--                        </li>-->
                     </ul>
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i>Cart<small class="text-gray">(2)</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i><small>Cart</small><small class="text-gray">(2)</small></a></li>
+_END;
+if($userID == 0) {
+    echo <<<_END
                         <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>Login</a></li>
+_END;
+}else{
+    echo <<<_END
+                        <li class="nav-item"><a class="nav-link" href="custacct.php?userID=$userID"> <i class="fas fa-user-alt mr-1 text-gray"></i><small>$email</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href="logout.php"><small>Logout</small></a></li>
+_END;
+}
+echo <<<_END
                     </ul>
                 </div>
             </nav>

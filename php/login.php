@@ -21,9 +21,9 @@
                     <div class="loginmodal-container" style="background: url(binding_dark.png)repeat fixed;color: black;">
                         <img src="/suburbanoutfitters/img/SUlogo.png"><br>
                         <h3 style="text-align: center">Suburban Outfitters</h3><br>
-                        <form action="index.php" method="post">
-                            <input type="text" name="uname" placeholder="Username" autocomplete="off" required>
-                            <input type="password" name="upass" placeholder="Password" autocomplete="off" required>
+                        <form action="login.php" method="post">
+                            <input type="text" name="email" placeholder="Email" autocomplete="off" required>
+                            <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                             <input type="submit" name="login" class="login loginmodal-submit" value="Login" style="background-color:#80b2f0;">
                         </form>
                         <a href="adminacct.php">Temporary Admin Acct Link</a> <a href="custacct.php">Temporary Customer Acct Link</a>
@@ -32,8 +32,56 @@
             </div>
         </div>
     </div>
-
 </div>
-
 </body>
 </html>
+
+<?php
+
+require_once 'dblogin.php';
+require_once 'User.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+
+    //Get values from login screen
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    //get password from DB w/ SQL
+    $query = "SELECT password FROM users WHERE email = '$email'";
+
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+
+    $rows = $result->num_rows;
+    $passwordFromDB="";
+    for($j=0; $j<$rows; $j++)
+    {
+        $result->data_seek($j);
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $passwordFromDB = $row['password'];
+
+    }
+
+    //Compare passwords
+    if($password == $passwordFromDB)
+    {
+        echo "successful login<br>";
+
+        $user = new User($email);
+
+        session_start();
+        $_SESSION['user'] = $user;
+
+        header("Location: index.php");
+    }
+    else
+    {
+        echo "login error<br>";
+    }
+}
+
+$conn->close();

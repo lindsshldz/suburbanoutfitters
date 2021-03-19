@@ -1,11 +1,8 @@
 <?php
-require_once 'dblogin.php';
-include 'navbar.php';
+include 'custnavbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
-
-$customerID = 1;
 
 if (isset($_POST['cvv'])) {
     $firstName = $_POST['firstName'];
@@ -25,13 +22,13 @@ if (isset($_POST['cvv'])) {
 
     $total = $_POST['total'];
 
-    $orderQuery = "INSERT INTO orders SET customerID='$customerID', storeID='1', orderDate=CURDATE(), totalPrice='$total' ";
+    $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total' ";
     $orderResult = $conn->query($orderQuery);
     if(!$orderResult) die($conn->error);
     $orderID = $conn->insert_id;
 
     $cartQuery = "SELECT products.sellPrice, cartItem.productID, cartItem.cartQty FROM products INNER JOIN cartItem ON
-                  products.productID = cartItem.productID WHERE customerID = '$customerID'";
+                  products.productID = cartItem.productID WHERE userID = '$userID'";
     $cartResult = $conn->query($cartQuery);
     if(!$cartResult) die($conn->error);
     $rows = $cartResult->num_rows;
@@ -42,17 +39,17 @@ if (isset($_POST['cvv'])) {
         $lineResult = $conn->query($lineQuery);
         if (!$lineResult) die($conn->error);
     }
-    $custQuery = "UPDATE customers SET firstName='$firstName', lastName='$lastName', email='$email', phoneNumber='$phoneNumber'
-                  WHERE customerID = '$customerID'";
+    $custQuery = "UPDATE users SET firstName='$firstName', lastName='$lastName', email='$email', phoneNumber='$phoneNumber'
+                  WHERE userID = '$userID'";
     $custResult = $conn->query($custQuery);
     if(!$custResult) die($conn->error);
 
-    $paymentQuery = "INSERT INTO payment SET customerID='$customerID', orderID='$orderID', address1='$address1', address2='$address2', city='$city', state='$state',
+    $paymentQuery = "INSERT INTO payment SET userID='$userID', orderID='$orderID', address1='$address1', address2='$address2', city='$city', state='$state',
                      zipCode='$zipCode', creditCard='$creditCard', expMonth='$expMonth', expYear='$expYear', cvv=$cvv, paymentDate=CURDATE()";
     $paymentResult = $conn->query($paymentQuery);
     if(!$paymentResult) die($conn->error);
 
-    $emptyCart = "DELETE FROM cartItem WHERE customerID = '$customerID'";
+    $emptyCart = "DELETE FROM cartItem WHERE userID = '$userID'";
     $emptyResult = $conn->query($emptyCart);
     if(!$emptyResult) die($conn->error);
 

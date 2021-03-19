@@ -1,6 +1,8 @@
 <?php
+$page_roles = array('admin','customer');
 require_once 'dblogin.php';
-include('navbar.php');
+require_once 'checksession.php';
+include 'custnavbar.php';
 
 //Connect to database
 $conn = new mysqli($hn, $un, $pw, $db);

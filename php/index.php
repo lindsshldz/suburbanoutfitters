@@ -1,5 +1,7 @@
 <?php
-include('navbar.php');
+$page_roles = array('admin','customer');
+require_once 'checksession.php';
+include 'custnavbar.php';
 echo <<<_END
     <!-- HERO SECTION-->
     <div class="container">

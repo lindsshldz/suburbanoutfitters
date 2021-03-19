@@ -1,5 +1,6 @@
 <?php
-require_once 'dblogin.php';
+include 'custnavbar.php';
+
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
@@ -16,8 +17,6 @@ $conn->close();
 
 $image = $row['imgName'];
 $thumbnail = $row['imgThumbnail'];
-
-include('navbar.php');
 echo <<<_END
 <section class="py-5">
     <div class="container">
@@ -45,7 +44,7 @@ echo <<<_END
                 <p class="text-small mb-4">$row[productDescription]</p>
                 <form method="post" action="cart.php">
                     <input type="hidden" name="productID" value="$row[productID]">
-                    <input type="hidden" name="customerID" value="1">
+                    <input type="hidden" name="userID" value="1">
                     <div class="row align-items-stretch mb-4">
                         <div class="col-sm-5 pr-sm-0">
                             <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>

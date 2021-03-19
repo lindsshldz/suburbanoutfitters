@@ -1,25 +1,22 @@
 <?php
-require_once 'dblogin.php';
-include 'navbar.php';
+include 'custnavbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
-
-$customerID = 1;
 
 if (isset($_POST['cartQty'])) {
     $productID = $_POST['productID'];
     $cartQty = $_POST['cartQty'];
 
-    $query = "SELECT cartQty FROM cartItem WHERE productID = '$productID' AND customerID = '$customerID'";
+    $query = "SELECT cartQty FROM cartItem WHERE productID = '$productID' AND userID = '$userID'";
 
     $result = $conn->query($query);
     if(!$result) die($conn->error);
     $row = $result->fetch_array(MYSQLI_ASSOC);
 
     if (count($row) == 0) {
-        $query = "INSERT INTO cartItem (customerID, productID, cartQty) VALUES 
-              ('$customerID', '$productID', '$cartQty')";
+        $query = "INSERT INTO cartItem (userID, productID, cartQty) VALUES 
+              ('$userID', '$productID', '$cartQty')";
     }else {
         $cartQty = $cartQty + $row['cartQty'];
         $query = "UPDATE cartItem SET cartQty = '$cartQty' WHERE productID = $productID";
@@ -48,7 +45,7 @@ if (isset($_POST['delete'])) {
 }
 
 $query = "SELECT products.productID, products.imgName, products.productName, products.sellPrice, cartItem.cartQty FROM products INNER JOIN cartItem ON
-          products.productID = cartItem.productID WHERE customerID = '$customerID'";
+          products.productID = cartItem.productID WHERE userID = '$userID'";
 
 $result = $conn->query($query);
 if(!$result) die($conn->error);
@@ -156,7 +153,9 @@ $total = $subtotal + $tax;
 $total = sprintf("%01.2f", $total);
 
 echo <<<_END
-
+                                <tr>
+                                <td class="align-middle border-0"><a href="products.php"><i class="fas fa-arrow-left"></i> Continue Shopping</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -187,7 +186,7 @@ echo <<<_END
             </div>
         </section>
 _END;
-$custQuery = "SELECT * FROM customers WHERE customerID = '$customerID'";
+$custQuery = "SELECT * FROM users WHERE userID = '$userID'";
 
 $custResult = $conn->query($custQuery);
 if(!$custResult) die($conn->error);
