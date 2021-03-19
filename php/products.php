@@ -1,7 +1,4 @@
 <?php
-$page_roles = array('admin','customer');
-require_once 'dblogin.php';
-require_once 'checksession.php';
 include 'custnavbar.php';
 
 //Connect to database

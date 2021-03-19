@@ -1,3 +1,4 @@
+<!--lindsay's edits-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
