@@ -1,4 +1,4 @@
-
+<!--lindsay's edits-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,3 +36,53 @@
 </div>
 </body>
 </html>
+
+<?php
+
+require_once 'dblogin.php';
+require_once 'User.php';
+
+$conn = new mysqli($hn, $un, $pw, $db);
+if($conn->connect_error) die($conn->connect_error);
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+
+    //Get values from login screen
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    //get password from DB w/ SQL
+    $query = "SELECT password FROM users WHERE email = '$email'";
+
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+
+    $rows = $result->num_rows;
+    $passwordFromDB="";
+    for($j=0; $j<$rows; $j++)
+    {
+        $result->data_seek($j);
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $passwordFromDB = $row['password'];
+
+    }
+
+    //Compare passwords
+    if(password_verify($password,$passwordFromDB))
+    {
+        echo "successful login<br>";
+
+        $user = new User($email);
+
+        session_start();
+        $_SESSION['user'] = $user;
+
+        header("Location: index.php");
+    }
+    else
+    {
+        echo "login error<br>";
+    }
+}
+
+$conn->close();
