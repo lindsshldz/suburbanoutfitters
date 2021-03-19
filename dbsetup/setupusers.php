@@ -1,6 +1,6 @@
 <?php
 //Run first, after importing suburban_outfitters.sql
-require_once 'dbsetup/dblogin.php';
+require_once '../php/dblogin.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
