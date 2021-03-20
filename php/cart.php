@@ -317,5 +317,3 @@ echo <<<_END
     <script src="/suburbanoutfitters/js/front.js"></script>
     </body>
 _END;
-
-

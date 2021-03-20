@@ -37,7 +37,6 @@
 </html>
 
 <?php
-
 require_once 'dblogin.php';
 require_once 'User.php';
 include 'Sanitize.php';
