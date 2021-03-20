@@ -1,26 +1,26 @@
 <?php
-include 'custnavbar.php';
+include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 if (isset($_POST['cvv'])) {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $email = $_POST['email'];
-    $phoneNumber = $_POST['phoneNumber'];
+    $firstName = mysql_entities_fix_string($conn,$_POST['firstName']);
+    $lastName = mysql_entities_fix_string($conn,$_POST['lastName']);
+    $email = mysql_entities_fix_string($conn,$_POST['email']);
+    $phoneNumber = mysql_entities_fix_string($conn,$_POST['phoneNumber']);
 
-    $address1 = $_POST['address1'];
-    $address2 = $_POST['address2'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zipCode = $_POST['zipCode'];
-    $creditCard = $_POST['creditCard'];
-    $expMonth = $_POST['expMonth'];
-    $expYear = $_POST['expYear'];
-    $cvv = $_POST['cvv'];
+    $address1 = mysql_entities_fix_string($conn,$_POST['address1']);
+    $address2 = mysql_entities_fix_string($conn,$_POST['address2']);
+    $city = mysql_entities_fix_string($conn,$_POST['city']);
+    $state = mysql_entities_fix_string($conn,$_POST['state']);
+    $zipCode = mysql_entities_fix_string($conn,$_POST['zipCode']);
+    $creditCard = mysql_entities_fix_string($conn,$_POST['creditCard']);
+    $expMonth = mysql_entities_fix_string($conn,$_POST['expMonth']);
+    $expYear = mysql_entities_fix_string($conn,$_POST['expYear']);
+    $cvv = mysql_entities_fix_string($conn,$_POST['cvv']);
 
-    $total = $_POST['total'];
+    $total = mysql_entities_fix_string($conn,$_POST['total']);
 
     $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total' ";
     $orderResult = $conn->query($orderQuery);
@@ -57,7 +57,7 @@ if (isset($_POST['cvv'])) {
 
 }
 
-$orderID = $_GET['orderID'];
+$orderID = mysql_entities_fix_string($conn,$_GET['orderID']);
 
 $query = "SELECT orders.orderID, orders.orderDate, orders.totalPrice, orderlines.quantity, orderlines.sellPrice,
           orderlines.productID, products.productName, products.imgName FROM orders INNER JOIN orderlines on orders.orderID = 
@@ -67,8 +67,10 @@ if(!$result) die($conn->error);
 
 $orderData = array();
 $rows = $result->num_rows;
+$total = 0;
 for($j=0; $j<$rows; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
+    $total = $row['totalPrice'];
     array_push($orderData, $row);
 }
 echo <<<_END
@@ -137,8 +139,7 @@ _END;
 }
 $tax = $subtotal * 0.047;
 $tax = sprintf("%01.2f", $tax);
-$total = $subtotal + $tax;
-$total = sprintf("%01.2f", $total);
+
 echo <<<_END
                         </tbody>
                     </table>
@@ -153,7 +154,7 @@ echo <<<_END
                             <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$$subtotal</span></li>
                             <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$$tax</span></li>
                             <li class="border-bottom my-2"></li>
-                            <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$$total</span></li>
+                            <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$total</span></li>
                         </ul>
                     </div>
                 </div>

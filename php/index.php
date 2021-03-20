@@ -1,7 +1,7 @@
 <?php
 $page_roles = array('admin','customer');
 require_once 'checksession.php';
-include 'custnavbar.php';
+include 'navbar.php';
 echo <<<_END
     <!-- HERO SECTION-->
     <div class="container">

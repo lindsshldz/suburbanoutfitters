@@ -1,10 +1,10 @@
 <?php
-include 'custnavbar.php';
+include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$orderID = $_GET['orderID'];
+$orderID = mysql_entities_fix_string($conn,$_GET['orderID']);
 
 $query = "SELECT users.firstName, users.lastName, payment.*, orders.orderID, shipping.status, shipping.tracking
             FROM users INNER JOIN payment ON users.userID = payment.userID INNER JOIN shipping ON 

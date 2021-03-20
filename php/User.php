@@ -8,7 +8,7 @@ if ($conn->connect_error) die($conn->connect_error);
 class User{
     public $email;
     public $userID;
-	public $roles = Array();
+	public $role = '';
 	
 	function __construct($email){
 		global $conn;
@@ -22,19 +22,19 @@ class User{
 			
 		$rows = $result->num_rows;		
 		
-		$roles = Array();
+		$role = '';
 
 		for($i=0; $i<$rows; $i++){
 			$row = $result->fetch_array(MYSQLI_ASSOC);			
-			$roles[] = $row['role'];
+			$role = $row['role'];
 			$this->userID= $row['userID'];
 		}		
 
-		$this->roles = $roles;
+		$this->role = $role;
 	}
 
 	function getRoles(){
-		return $this->roles;
+		return $this->role;
 	}
 
 }
