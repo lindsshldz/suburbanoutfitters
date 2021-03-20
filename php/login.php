@@ -27,7 +27,6 @@
                             <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                             <input type="submit" name="login" class="login loginmodal-submit" value="Login" style="background-color:#80b2f0;">
                         </form>
-                        <a href="adminacct.php">Temporary Admin Acct Link</a> <a href="custacct.php">Temporary Customer Acct Link</a>
                     </div>
                 </div>
             </div>

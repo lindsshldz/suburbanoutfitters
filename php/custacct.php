@@ -1,17 +1,17 @@
 <?php
-include 'custnavbar.php';
+include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$userID = $_GET['userID'];
+$userID = mysql_entities_fix_string($conn,$_GET['userID']);
 
 if(isset($_POST['submit'])) {
     $fname = mysql_entities_fix_string($conn,$_POST['firstName']);
-    $lname = mysql_entities_fix_string($conn, $_POST['lastName']);
-    $email = mysql_entities_fix_string($conn, $_POST['email']);
-    $phone = mysql_entities_fix_string($conn, $_POST['phoneNumber']);
-    $password = mysql_entities_fix_string($conn, $_POST['password']);
+    $lname = mysql_entities_fix_string($conn,$_POST['lastName']);
+    $email = mysql_entities_fix_string($conn,$_POST['email']);
+    $phone = mysql_entities_fix_string($conn,$_POST['phoneNumber']);
+    $password = mysql_entities_fix_string($conn,$_POST['password']);
 
     $query = "UPDATE users SET firstName='$fname', lastName='$lname', email='$email', phoneNumber='$phone', 
                      password='$password' WHERE userID=$userID";

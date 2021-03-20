@@ -1,5 +1,5 @@
 <?php
-include 'custnavbar.php';
+include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
@@ -140,19 +140,22 @@ for($j=0; $j<$rows; ++$j) {
                                     <form method="post" action="cart.php">
                                         <input type="hidden" name="prodID" value="$prodID">
                                         <button type="submit" name="delete" style="border: none; background: none;"><i class="fas fa-trash-alt small text-muted"></i></button>
-                                   </form><a/>
+                                   </form></a>
                                 </td>
                             </tr>
-                            
 _END;
 }
-
 $tax = $subtotal * 0.047;
 $tax = sprintf("%01.2f", $tax);
 $total = $subtotal + $tax;
+$discount = 0.0;
+if(isset($_SESSION['discount'])){
+    $discount = $_SESSION['discount'];
+    $total = $total - ($total * $discount);
+}
 $total = sprintf("%01.2f", $total);
 
-echo <<<_END
+    echo <<<_END
                                 <tr>
                                 <td class="align-middle border-0"><a href="products.php"><i class="fas fa-arrow-left"></i> Continue Shopping</a></td>
                                 </tr>
@@ -170,15 +173,49 @@ echo <<<_END
                                 <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$$subtotal</span></li>
                                 <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$$tax</span></li>
                                 <li class="border-bottom my-2"></li>
-                                <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$$total</span></li>
-                                <form method="post" action="checkout.php"> 
+                                <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$$total</span></li> 
+_END;
+if(isset($_SESSION['discount'])){
+    $formatter = new NumberFormatter('en_US', NumberFormatter::PERCENT);
+    $discount = $formatter->format($discount);
+    echo <<<_END
+                                            <li><p class="mb-0 small">Applied your $discount discount!</p></li>
+_END;
+}else {
+        echo <<<_END
+
+                                <li>                             
+                                    <form method="post" action="cart.php"> 
                                     <input type="hidden" value="$total" name="total">
-                                <li>
                                         <div class="form-group mb-0">
-                                            <input class="form-control" type="text" placeholder="Enter your coupon">
+                                            <input type="hidden" value="$total" name="total">
+                                            <input class="form-control" name="code" type="text" placeholder="Enter your promo code">
                                             <button class="btn btn-dark btn-sm btn-block" type="submit" name="promo"> <i class="fas fa-gift mr-2"></i>Apply coupon</button>
                                         </div>
+                                    </form>
                                 </li>
+
+_END;
+}
+if (isset($_POST['promo'])) {
+    $promocode = $_POST['code'];
+
+    $codeQuery = "SELECT discount FROM promos WHERE promoCode='$promocode'";
+    $codeResult = $conn->query($codeQuery);
+    $row = $codeResult->fetch_array(MYSQLI_ASSOC);
+
+    if (!empty($row)) {
+        $discount = $row['discount'];
+        $_SESSION['discount'] = $discount;
+
+    } else {
+        echo <<<_END
+                                            <p class="mb-0 small">Not a valid promo code</p>
+_END;
+        }
+}
+
+echo <<<_END
                             </ul>
                         </div>
                     </div>
@@ -196,7 +233,8 @@ echo <<<_END
             <section class="py-5">
                 <h2 class="h5 text-uppercase mb-4">Checkout Your Cart</h2>
                 <div class="row">
-                    <div class="col-lg-8">     
+                    <div class="col-lg-8"> 
+                        <form method="post" action="checkout.php">     
                             <div class="row">
                                 <div class="col-lg-6 form-group">
                                     <label class="text-small text-uppercase" for="firstName">First name</label>
@@ -259,13 +297,14 @@ echo <<<_END
                                     </div>
                                 </div>
                                 <div class="col-lg-12 form-group">
+                                    <input type="hidden" value="$total" name="total">
                                     <button class="btn btn-dark" type="submit">Place order</button>
                                 </div>
                             </div>
+                        </form>
                     </div>
                 </div>
             </section>
-        </form>
     </div>
     <!-- JavaScript files-->
     <script src="/suburbanoutfitters/thirdparty/jquery/jquery.min.js"></script>
@@ -278,6 +317,3 @@ echo <<<_END
     <script src="/suburbanoutfitters/js/front.js"></script>
     </body>
 _END;
-
-
-
