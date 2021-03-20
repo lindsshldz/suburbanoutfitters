@@ -7,12 +7,7 @@ require_once 'checksession.php';
 //Connect to database
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
-
-$query = "SELECT * FROM products";
-
-$result = $conn->query($query);
-if (!$result) die($conn->error);
-
+$query = "SELECT * from orders";
 //HTML
 echo <<<_END
 <head>
