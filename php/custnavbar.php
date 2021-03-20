@@ -3,6 +3,7 @@ $page_roles = array('admin','customer');
 
 require_once 'dblogin.php';
 require_once 'checksession.php';
+include 'Sanitize.php';
 
 //Connect to database
 $conn = new mysqli($hn, $un, $pw, $db);
