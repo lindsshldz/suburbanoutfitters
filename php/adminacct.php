@@ -7,10 +7,10 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 //Get values from login screen
-$email = mysql_entities_fix_string($conn, $_POST['email']);
-$password = mysql_entities_fix_string($conn, $_POST['password'];
-$firstName = "";
-$lastName = "";
+// $email = mysql_entities_fix_string($conn, $_POST['email']);
+// $password = mysql_entities_fix_string($conn, $_POST['password']);
+// $firstName = "";
+// $lastName = "";
 
 
 
@@ -101,6 +101,15 @@ echo <<<_END
 </html>
 _END;
 
+//sanitization functions
+function mysql_entities_fix_string($conn, $string){
+	return htmlentities(mysql_fix_string($conn, $string));	
+}
+
+function mysql_fix_string($conn, $string){
+	$string = stripslashes($string);
+	return $conn->real_escape_string($string);
+}
 
 
 ?>
