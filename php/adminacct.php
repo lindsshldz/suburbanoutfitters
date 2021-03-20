@@ -1,27 +1,52 @@
 <?php
 
 require_once 'dblogin.php';
+require_once 'User.php';
+
 //create connection
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$username = "";
+//Get values from login screen
+$email = $_POST['email'];
+$password = $_POST['password'];
 $firstName = "";
 $lastName = "";
 
+if (isset($_POST['email']) && isset($_POST['password'])) {
 
-$query = "SELECT * from admins where email='u5678@utah.edu'";
+    $query = "SELECT * from admins where email='$email'";
 
-$result = $conn->query($query);
-if(!$result) die($conn->error);
+    $result = $conn->query($query);
+    if(!$result) die($conn->error);
+    $passwordFromDB="";
 
-$rows = $result->num_rows;
-for($i = 0; $i < $rows; $i++){
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    $username = $row['email'];
-    $firstName = $row['firstName'];
-    $lastName = $row['lastName'];
+    $rows = $result->num_rows;
+    for($i = 0; $i < $rows; $i++){
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $email = $row['email'];
+        $firstName = $row['firstName'];
+        $lastName = $row['lastName'];
+        $passwordFromDB = $row['password'];
+    }
+    //Compare passwords
+    if(password_verify($password,$passwordFromDB))
+    {
+        echo "successful login<br>";
+
+        $user = new User($email);
+
+        session_start();
+        $_SESSION['user'] = $user;
+
+        header("Location: index.php");
+    }
+    else
+    {
+        echo "login error<br>";
+    }
 }
+
 
 
 echo <<<_END
@@ -68,7 +93,7 @@ echo <<<_END
                             
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>$username</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i>$email</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -93,7 +118,7 @@ echo <<<_END
                         <div class="col-sm-8">
                            <p>$firstName</p>
                             <p>$lastName</p>
-                            <p>$username</p>
+                            <p>$email</p>
                         </div>
                     </div>
                     
@@ -103,7 +128,7 @@ echo <<<_END
             <input type="file" value="update photo">
             <div class="border-bottom my-2"></div>
             <div class="card-body">
-                <h5 class="text-uppercase mb-4">Assisted Order Lists by: $username</this></h5>
+                <h5 class="text-uppercase mb-4">Assisted Order Lists by: $email</this></h5>
                     <ul class="list-unstyled mb-0">
 _END;
 
