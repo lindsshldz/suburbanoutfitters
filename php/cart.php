@@ -5,8 +5,8 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 if (isset($_POST['cartQty'])) {
-    $productID = $_POST['productID'];
-    $cartQty = $_POST['cartQty'];
+    $productID = mysql_entities_fix_string($conn, $_POST['productID']);
+    $cartQty = mysql_entities_fix_string($conn, $_POST['cartQty']);
 
     $query = "SELECT cartQty FROM cartItem WHERE productID = '$productID' AND userID = '$userID'";
 
@@ -28,8 +28,8 @@ if (isset($_POST['cartQty'])) {
 }
 
 if (isset($_POST['cartupdate'])) {
-    $qty = $_POST['quantity'];
-    $prodID = $_POST['prodID'];
+    $qty = mysql_entities_fix_string($conn, $_POST['quantity']);
+    $prodID = mysql_entities_fix_string($conn, $_POST['prodID']);
 
     $cartQuery = "UPDATE cartItem SET cartQty='$qty' WHERE productID='$prodID'";
     $cartResult = $conn->query($cartQuery);
@@ -37,7 +37,7 @@ if (isset($_POST['cartupdate'])) {
 }
 
 if (isset($_POST['delete'])) {
-    $prodID = $_POST['prodID'];
+    $prodID = mysql_entities_fix_string($conn, $_POST['prodID']);
 
     $deleteQuery = "DELETE FROM cartItem WHERE productID='$prodID'";
     $deleteResult = $conn->query($deleteQuery);
@@ -278,4 +278,6 @@ echo <<<_END
     <script src="/suburbanoutfitters/js/front.js"></script>
     </body>
 _END;
+
+
 

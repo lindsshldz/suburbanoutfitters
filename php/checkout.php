@@ -5,22 +5,22 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 if (isset($_POST['cvv'])) {
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $email = $_POST['email'];
-    $phoneNumber = $_POST['phoneNumber'];
+    $firstName = mysql_entities_fix_string($conn, $_POST['firstName']);
+    $lastName = mysql_entities_fix_string($conn, $_POST['lastName']);
+    $email = mysql_entities_fix_string($conn, $_POST['email']);
+    $phoneNumber = mysql_entities_fix_string($conn, $_POST['phoneNumber']);
 
-    $address1 = $_POST['address1'];
-    $address2 = $_POST['address2'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zipCode = $_POST['zipCode'];
-    $creditCard = $_POST['creditCard'];
-    $expMonth = $_POST['expMonth'];
-    $expYear = $_POST['expYear'];
-    $cvv = $_POST['cvv'];
+    $address1 = mysql_entities_fix_string($conn, $_POST['address1']);
+    $address2 = mysql_entities_fix_string($conn, $_POST['address2']);
+    $city = mysql_entities_fix_string($conn, $_POST['city']);
+    $state = mysql_entities_fix_string($conn, $_POST['state']);
+    $zipCode = mysql_entities_fix_string($conn, $_POST['zipCode']);
+    $creditCard = mysql_entities_fix_string($conn, $_POST['creditCard']);
+    $expMonth =mysql_entities_fix_string($conn, $_POST['expMonth']);
+    $expYear = mysql_entities_fix_string($conn, $_POST['expYear']);
+    $cvv = mysql_entities_fix_string($conn, $_POST['cvv']);
 
-    $total = $_POST['total'];
+    $total = mysql_entities_fix_string($conn, $_POST['total']);
 
     $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total' ";
     $orderResult = $conn->query($orderQuery);

@@ -7,9 +7,10 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
 //Get values from login screen
-// $email = 'smith@test.com';
-// $firstName = "";
-// $lastName = "";
+$email = mysql_entities_fix_string($conn, $_POST['email']);
+$password = mysql_entities_fix_string($conn, $_POST['password'];
+$firstName = "";
+$lastName = "";
 
 
 

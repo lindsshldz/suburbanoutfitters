@@ -38,9 +38,9 @@
 </html>
 
 <?php
-
 require_once 'dblogin.php';
 require_once 'User.php';
+include 'Sanitize.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
@@ -48,8 +48,8 @@ if($conn->connect_error) die($conn->connect_error);
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
     //Get values from login screen
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = mysql_entities_fix_string($conn, $_POST['email']);
+    $password = mysql_entities_fix_string($conn, $_POST['password']);
 
     //get password from DB w/ SQL
     $query = "SELECT password FROM users WHERE email = '$email'";

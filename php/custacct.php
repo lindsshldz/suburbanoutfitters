@@ -7,11 +7,11 @@ if($conn->connect_error) die($conn->connect_error);
 $userID = $_GET['userID'];
 
 if(isset($_POST['submit'])) {
-    $fname = $_POST['firstName'];
-    $lname = $_POST['lastName'];
-    $email = $_POST['email'];
-    $phone = $_POST['phoneNumber'];
-    $password = $_POST['password'];
+    $fname = mysql_entities_fix_string($conn,$_POST['firstName']);
+    $lname = mysql_entities_fix_string($conn, $_POST['lastName']);
+    $email = mysql_entities_fix_string($conn, $_POST['email']);
+    $phone = mysql_entities_fix_string($conn, $_POST['phoneNumber']);
+    $password = mysql_entities_fix_string($conn, $_POST['password']);
 
     $query = "UPDATE users SET firstName='$fname', lastName='$lname', email='$email', phoneNumber='$phone', 
                      password='$password' WHERE userID=$userID";
@@ -97,4 +97,5 @@ echo <<<_END
 </div>
 </body>
 _END;
+
 
