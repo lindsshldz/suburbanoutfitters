@@ -1,10 +1,10 @@
 <?php
-include 'custnavbar.php';
+include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$productID = $_GET["productID"];
+$productID = mysql_entities_fix_string($conn, $_GET["productID"]);
 
 $query = "SELECT * FROM products WHERE productID = $productID";
 $result = $conn->query($query);

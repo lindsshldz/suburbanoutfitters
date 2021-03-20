@@ -1,8 +1,5 @@
 <?php
-$page_roles = array('admin','customer');
-require_once 'dblogin.php';
-require_once 'checksession.php';
-include 'custnavbar.php';
+include 'navbar.php';
 
 //Connect to database
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -11,7 +8,7 @@ if($conn->connect_error) die($conn->connect_error);
 $query = "SELECT * FROM products";
 
 if (isset($_GET["category"])) {
-    $category = $_GET["category"];
+    $category = mysql_entities_fix_string($conn, $_GET["category"]);
     $query = "SELECT * FROM products WHERE category = '$category'";
 }
 

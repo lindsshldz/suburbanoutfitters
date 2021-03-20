@@ -1,6 +1,6 @@
 <?php
 
-$hn = "localhost:3306"; //host name
+$hn = "localhost:8889"; //host name
 $db = "suburban_outfitters"; //database
 $un = "root"; //username
-$pw = ""; //password
+$pw = "root"; //password
