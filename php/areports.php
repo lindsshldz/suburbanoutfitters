@@ -114,7 +114,7 @@ echo <<<_END
             </div>
         </section>
         <div class="col-lg-12 form-group">
-            <button class="btn btn-light btn-outline-dark"><a href="aorderlist.php">Admin Account</a></button>
+            <button class="btn btn-light btn-outline-dark"><a href="aorderlist.php">All Orders</a></button>
         </div>
     </div>
     </div>
