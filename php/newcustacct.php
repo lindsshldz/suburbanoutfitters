@@ -41,7 +41,9 @@ echo <<<_END
         </section>
         <div class="container">
         <section class="py-5">
-            <h2 class="h5 text-uppercase mb-4">Your Account Details</h2>
+            <p class="text-body">Once you sign up, you'll enter your new credentials at login. Happy shopping!</p>
+            <br>
+            <h2 class="h5 text-uppercase mb-4">Account Details</h2>
             <div class="row">
                 <form method="post" action="newcustacct.php">
                     <fieldset style="width:200px;">

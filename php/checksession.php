@@ -6,7 +6,7 @@ $user_role = null;
 session_start();
 
 if(!isset($_SESSION['user'])) {
-    header("Location: newcustacct.php");
+    header("Location: login.php");
     exit();
 }else{
 	$user = $_SESSION['user'];
