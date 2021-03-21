@@ -1,9 +1,6 @@
 <?php
-$page_roles = array('admin','customer');
-
 require_once 'dblogin.php';
 include 'Sanitize.php';
-require_once 'checksession.php';
 
 //Connect to database
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -103,7 +100,7 @@ _END;
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="index.php">Home</a>
+                                <a class="nav-link" href="index.php">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="adminacct.php?userID=$userID">*Admin Access*</a>
@@ -160,12 +157,9 @@ _END;
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" href="index.php">Home</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i><small>Cart</small></a></li>
-                            <li class="nav-item"><a class="nav-link" href="login.php"> <i class="fas fa-user-alt mr-1 text-gray"></i><small>LOGIN</small></a></li>
                         </ul>
                     </div>
                 </nav>

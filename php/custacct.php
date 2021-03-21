@@ -1,4 +1,6 @@
 <?php
+$page_roles = array('admin','customer');
+require_once 'checksession.php';
 include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
