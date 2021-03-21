@@ -74,3 +74,5 @@ echo <<<_END
     </section>
     </div>
 _END;
+
+$conn->close();

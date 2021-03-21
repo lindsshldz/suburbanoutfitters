@@ -239,3 +239,5 @@ echo <<<_END
 </div>
 </body>
 _END;
+
+$conn->close();

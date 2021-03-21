@@ -123,3 +123,4 @@ echo <<<_END
 </html>
 _END;
 
+$conn->close();
