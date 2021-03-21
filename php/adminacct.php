@@ -73,7 +73,6 @@ echo <<<_END
 _END;
 
 $order_number = "";
-//order query
 $order_query = "SELECT * from orders WHERE admin_userID = '$userID'";
 $order_result = $conn->query($order_query);
 if(!$order_query) die($conn->error);
@@ -82,7 +81,6 @@ $orders = $order_result->num_rows;
 for($j = 0; $j< $orders; $j++){
     $order = $order_result->fetch_array(MYSQLI_ASSOC);
     $order_number = $order['orderID'];
-//loop for orders
     echo <<<_END
                 <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Order #: $order_number</strong>
                     <a class="btn btn-link" href="aorderdetails.php?orderID=$order_number"><span>Details</span></a></li>
@@ -110,5 +108,4 @@ echo <<<_END
 </body>
 </html>
 _END;
-
 
