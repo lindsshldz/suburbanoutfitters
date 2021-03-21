@@ -9,16 +9,17 @@ if($conn->connect_error) die($conn->connect_error);
 if (isset($_POST['cartQty'])) {
     $productID = mysql_entities_fix_string($conn, $_POST['productID']);
     $cartQty = mysql_entities_fix_string($conn, $_POST['cartQty']);
+    $invSize = mysql_entities_fix_string($conn, $_POST['invSize']);
 
-    $query = "SELECT cartQty FROM cartItem WHERE productID = '$productID' AND userID = '$userID'";
+    $query = "SELECT * FROM cartItem WHERE productID = '$productID' AND userID = '$userID'";
 
     $result = $conn->query($query);
     if(!$result) die($conn->error);
     $row = $result->fetch_array(MYSQLI_ASSOC);
 
     if (empty($row)) {
-        $query = "INSERT INTO cartItem (userID, productID, cartQty) VALUES 
-              ('$userID', '$productID', '$cartQty')";
+        $query = "INSERT INTO cartItem (userID, productID, invSize, cartQty) VALUES 
+              ('$userID', '$productID', '$invSize','$cartQty')";
     }else {
         $cartQty = $cartQty + $row['cartQty'];
         $query = "UPDATE cartItem SET cartQty = '$cartQty' WHERE productID = $productID";
@@ -27,7 +28,6 @@ if (isset($_POST['cartQty'])) {
     if(!$result) die($conn->error);
 
     header("Location: cart.php");
-    exit();
 }
 
 if (isset($_POST['cartupdate'])) {
@@ -47,8 +47,9 @@ if (isset($_POST['delete'])) {
     if(!$deleteResult) die($conn->error);
 }
 
-$query = "SELECT products.productID, products.imgName, products.productName, products.sellPrice, cartItem.cartQty FROM products INNER JOIN cartItem ON
-          products.productID = cartItem.productID WHERE userID = '$userID'";
+$query = "SELECT products.productID, products.imgName, products.productName, products.sellPrice, cartItem.invSize, 
+            cartItem.cartQty FROM products INNER JOIN cartItem ON
+            products.productID = cartItem.productID WHERE userID = '$userID'";
 
 $result = $conn->query($query);
 if(!$result) die($conn->error);
@@ -119,6 +120,7 @@ echo <<<_END
                             <tr>
                                 <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Product</strong></th>
                                 <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Price</strong></th>
+                                <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Size</strong></th>
                                 <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Quantity</strong></th>
                                 <th class="border-0" scope="col"> <strong class="text-small text-uppercase">Total</strong></th>
                                 <th class="border-0" scope="col"> </th>
@@ -127,7 +129,7 @@ echo <<<_END
                             <tbody>
 _END;
 $subtotal = 0;
-
+$invSize = '';
 for($j=0; $j<$rows; ++$j) {
     $item = $cart_data[$j];
 
@@ -136,6 +138,7 @@ for($j=0; $j<$rows; ++$j) {
     $prodName = $item['productName'];
     $price = $item['sellPrice'];
     $qty = $item['cartQty'];
+    $invSize = $item['invSize'];
     $prodTotal = $price * $qty;
 
     $subtotal += $prodTotal;
@@ -149,6 +152,9 @@ for($j=0; $j<$rows; ++$j) {
                                 </th>
                                 <td class="align-middle border-0">
                                     <p class="mb-0 small">$$price</p>
+                                </td>
+                                <td class="align-middle border-0">
+                                    <p class="mb-0 small">$invSize</p>
                                 </td>
                                     <td class="align-middle border-0">
                                         <form method="post" action="cart.php">
@@ -221,7 +227,7 @@ _END;
                                         <div class="form-group mb-0">
                                             <input type="hidden" value="$total" name="total">
                                             <input class="form-control" name="code" type="text" placeholder="Enter your promo code">
-                                            <button class="btn btn-dark btn-sm btn-block" type="submit" name="promo" onclick='window.location.reload(true);'> <i class="fas fa-gift mr-2"></i>Apply coupon</button>
+                                            <button class="btn btn-dark btn-sm btn-block" type="submit" name="promo"> <i class="fas fa-gift mr-2"></i>Apply coupon</button>
                                         </div>
                                     </form>
                                 </li>
@@ -314,6 +320,7 @@ echo <<<_END
                                 <div class="col-lg-12 form-group">
                                     <input type="hidden" value="$total" name="total">
                                     <input type="hidden" value="$promoID" name="promoID">
+                                    <input type="hidden" value="$invSize" name="invSize">
                                     <button class="btn btn-dark" type="submit">Place order</button>
                                 </div>
                             </div>

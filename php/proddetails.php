@@ -14,9 +14,7 @@ if(!$result) die($conn->error);
 
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
-
-$conn->close();
-
+$productID = $row['productID'];
 $image = $row['imgName'];
 $thumbnail = $row['imgThumbnail'];
 echo <<<_END
@@ -45,8 +43,32 @@ echo <<<_END
                 <p class="text-muted lead">$$row[sellPrice]</p>
                 <p class="text-small mb-4">$row[productDescription]</p>
                 <form method="post" action="cart.php">
+                <ul class="list-unstyled small d-inline-block">
+                    <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Size:</strong><select name="invSize" style="margin-left: 10px;">
+                        <option></option>
+_END;
+$invQuery = "SELECT * FROM inventory WHERE productID = '$productID'";
+$invResult = $conn->query($invQuery);
+$invSize = "";
+$inventoryID = "";
+if(!$invResult) die($conn->error);
+$invRows = $invResult->num_rows;
+for($j=0; $j<$invRows; ++$j) {
+    $invRow = $invResult->fetch_array(MYSQLI_ASSOC);
+    $invSize = $invRow['invSize'];
+    $inventoryID = $invRow['inventoryID'];
+    echo <<<_END
+                        <option><span class="ml-2 text-muted" value="$invSize">$invSize<span></option>
+_END;
+}
+echo  <<<_END
+
+                        </select>
+                    </li>
+                </ul>
+                
                     <input type="hidden" name="productID" value="$row[productID]">
-                    <input type="hidden" name="userID" value="1">
+                    <input type="hidden" name="userID" value="$userID">
                     <div class="row align-items-stretch mb-4">
                         <div class="col-sm-5 pr-sm-0">
                             <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
@@ -82,4 +104,6 @@ echo <<<_END
 <script src="/suburbanoutfitters/js/front.js"></script>
 </body>
 _END;
+
+$conn->close();
 

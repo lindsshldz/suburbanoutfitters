@@ -25,6 +25,8 @@ if (isset($_POST['cvv'])) {
     $total = mysql_entities_fix_string($conn,$_POST['total']);
     $promoID = mysql_entities_fix_string($conn, $_POST['promoID']);
 
+    $invSize = mysql_entities_fix_string($conn, $_POST['invSize']);
+
     $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total', promoID='$promoID'";
     $orderResult = $conn->query($orderQuery);
     if(!$orderResult) die($conn->error);
@@ -35,13 +37,35 @@ if (isset($_POST['cvv'])) {
     $cartResult = $conn->query($cartQuery);
     if(!$cartResult) die($conn->error);
     $rows = $cartResult->num_rows;
+
     for($j=0; $j<$rows; ++$j) {
         $row = $cartResult->fetch_array(MYSQLI_ASSOC);
-        $lineQuery = "INSERT INTO orderlines SET productID='$row[productID]', orderID='$orderID', 
-                  quantity='$row[cartQty]', sellPrice='$row[sellPrice]'";
+        $productID = $row['productID'];
+        $orderQty = $row['cartQty'];
+        $sellPrice = $row['sellPrice'];
+
+        $invQuery = "SELECT inventoryID, quantity FROM inventory WHERE productID='$productID' AND invSize='$invSize'";
+        $invResult = $conn->query($invQuery);
+        error_log("invQuery: ".$invQuery);
+        if(!$invResult) die($conn->error);
+        $invRow = $invResult->fetch_array(MYSQLI_ASSOC);
+        $inventoryID = $invRow['inventoryID'];
+        $invQty = $invRow['quantity'];
+        error_log("invQty: ".$invQty);
+        error_log("invID: ".$inventoryID);
+
+        $lineQuery = "INSERT INTO orderlines SET productID='$productID', orderID='$orderID', 
+                        inventoryID='$inventoryID', quantity='$orderQty', sellPrice='$sellPrice'";
         $lineResult = $conn->query($lineQuery);
         if (!$lineResult) die($conn->error);
-    }
+
+        $newInv = $invQty - $orderQty;
+        error_log("newInv: ".$newInv);
+        $updateInvQuery = "UPDATE inventory SET quantity='$newInv' WHERE inventoryID='$inventoryID'";
+        $updateInvResult = $conn->query($updateInvQuery);
+        if(!$updateInvResult) die($conn->error);
+        }
+
     $custQuery = "UPDATE users SET firstName='$firstName', lastName='$lastName', email='$email', phoneNumber='$phoneNumber'
                   WHERE userID = '$userID'";
     $custResult = $conn->query($custQuery);
