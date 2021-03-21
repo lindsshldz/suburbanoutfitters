@@ -1,4 +1,6 @@
 <?php
+$page_roles = array('admin', 'customer');
+require_once 'checksession.php';
 include 'navbar.php';
 
 //Connect to database
@@ -51,7 +53,7 @@ $conn->close();
                 <!-- SHOP SIDEBAR-->
                 <div class="col-lg-3 order-2 order-lg-1">
                     <h5 class="text-uppercase mb-4">Categories</h5>
-                    <div class="py-2 px-4 bg-dark text-white mb-3"><a href="products.php"><strong class="small text-uppercase font-weight-bold" style="color: white;">Fashion</strong></a></div>
+                    <div class="py-2 px-4 bg-dark text-white mb-3"><a href="products.php"><strong class="small text-uppercase font-weight-bold" style="color: white;">All Fashion</strong></a></div>
                     <ul class="list-unstyled small text-muted pl-lg-4 font-weight-normal">
                         <li class="mb-2"><a class="reset-anchor" href="products.php?category=Shirts">Shirts</a></li>
                         <li class="mb-2"><a class="reset-anchor" href="products.php?category=Pants">Pants</a></li>

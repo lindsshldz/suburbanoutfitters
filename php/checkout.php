@@ -1,4 +1,6 @@
 <?php
+$page_roles = array('admin', 'customer');
+require_once 'checksession.php';
 include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -21,8 +23,9 @@ if (isset($_POST['cvv'])) {
     $cvv = mysql_entities_fix_string($conn,$_POST['cvv']);
 
     $total = mysql_entities_fix_string($conn,$_POST['total']);
+    $promoID = mysql_entities_fix_string($conn, $_POST['promoID']);
 
-    $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total' ";
+    $orderQuery = "INSERT INTO orders SET userID='$userID', storeID='1', orderDate=CURDATE(), totalPrice='$total', promoID='$promoID'";
     $orderResult = $conn->query($orderQuery);
     if(!$orderResult) die($conn->error);
     $orderID = $conn->insert_id;
@@ -48,6 +51,13 @@ if (isset($_POST['cvv'])) {
                      zipCode='$zipCode', creditCard='$creditCard', expMonth='$expMonth', expYear='$expYear', cvv=$cvv, paymentDate=CURDATE()";
     $paymentResult = $conn->query($paymentQuery);
     if(!$paymentResult) die($conn->error);
+    $paymentID = $conn->insert_id;
+
+    $status = 'New Order';
+    $tracking = 'New Order';
+    $shipQuery = "INSERT INTO shipping SET paymentID='$paymentID', tracking='$tracking', status='$status'";
+    $shipResult = $conn->query($shipQuery);
+    if(!$shipResult) die($conn->error);
 
     $emptyCart = "DELETE FROM cartItem WHERE userID = '$userID'";
     $emptyResult = $conn->query($emptyCart);
@@ -191,10 +201,10 @@ echo <<<_END
                             </div>
                         </th>
                         <td class="align-middle border-0">
-                            <p class="mb-0 small">Order Received</p>
+                            <p class="mb-0 small">New Order</p>
                         </td>
                         <td class="align-middle border-light">
-                            <div class="mb-0 small">Pending</div>
+                            <div class="mb-0 small">New Order</div>
                         </td>
                     </tr>
                     </tbody>

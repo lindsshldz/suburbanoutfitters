@@ -1,4 +1,6 @@
 <?php
+$page_roles = array('admin', 'customer');
+require_once 'checksession.php';
 include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -25,6 +27,7 @@ if (isset($_POST['cartQty'])) {
     if(!$result) die($conn->error);
 
     header("Location: cart.php");
+    exit();
 }
 
 if (isset($_POST['cartupdate'])) {
@@ -56,6 +59,33 @@ $rows = $result->num_rows;
 for($j=0; $j<$rows; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
     array_push($cart_data, $row);
+}
+
+$promoID = '';
+if (isset($_POST['promo'])) {
+    $promocode = mysql_entities_fix_string($conn, $_POST['code']);
+
+    $codeQuery = "SELECT * FROM promos WHERE promoCode='$promocode'";
+    $codeResult = $conn->query($codeQuery);
+    $row = $codeResult->fetch_array(MYSQLI_ASSOC);
+
+    if (!empty($row)) {
+        $discount = $row['discount'];
+        $promoID = $row['promoID'];
+        $_SESSION['discount'] = $discount;
+        $_SESSION['promoID'] = $promoID;
+    }else{
+        $invalidpromo = "Sorry! Not a valid promo.";
+        $_SESSION['invalidpromo'] = $invalidpromo;
+    }
+
+    header("Location: cart.php");
+}
+if(isset($_SESSION['promoID'])){
+    $promoID = $_SESSION['promoID'];
+}
+if(isset($_SESSION['invalidpromo'])){
+    $invalidpromo = $_SESSION['invalidpromo'];
 }
 echo <<<_END
     <div class="container">
@@ -190,31 +220,14 @@ _END;
                                         <div class="form-group mb-0">
                                             <input type="hidden" value="$total" name="total">
                                             <input class="form-control" name="code" type="text" placeholder="Enter your promo code">
-                                            <button class="btn btn-dark btn-sm btn-block" type="submit" name="promo"> <i class="fas fa-gift mr-2"></i>Apply coupon</button>
+                                            <button class="btn btn-dark btn-sm btn-block" type="submit" name="promo" onclick='window.location.reload(true);'> <i class="fas fa-gift mr-2"></i>Apply coupon</button>
                                         </div>
                                     </form>
                                 </li>
+                                <p class="mb-0 small">$invalidpromo</p>
 
 _END;
 }
-if (isset($_POST['promo'])) {
-    $promocode = $_POST['code'];
-
-    $codeQuery = "SELECT discount FROM promos WHERE promoCode='$promocode'";
-    $codeResult = $conn->query($codeQuery);
-    $row = $codeResult->fetch_array(MYSQLI_ASSOC);
-
-    if (!empty($row)) {
-        $discount = $row['discount'];
-        $_SESSION['discount'] = $discount;
-
-    } else {
-        echo <<<_END
-                                            <p class="mb-0 small">Not a valid promo code</p>
-_END;
-        }
-}
-
 echo <<<_END
                             </ul>
                         </div>
@@ -228,6 +241,8 @@ $custQuery = "SELECT * FROM users WHERE userID = '$userID'";
 $custResult = $conn->query($custQuery);
 if(!$custResult) die($conn->error);
 $customer = $custResult->fetch_array(MYSQLI_ASSOC);
+
+error_log(print_r("above checkout:".$promoID, true));
 echo <<<_END
         
             <section class="py-5">
@@ -298,6 +313,7 @@ echo <<<_END
                                 </div>
                                 <div class="col-lg-12 form-group">
                                     <input type="hidden" value="$total" name="total">
+                                    <input type="hidden" value="$promoID" name="promoID">
                                     <button class="btn btn-dark" type="submit">Place order</button>
                                 </div>
                             </div>
