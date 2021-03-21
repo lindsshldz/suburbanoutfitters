@@ -16,7 +16,7 @@ if (isset($_POST['cartQty'])) {
     if(!$result) die($conn->error);
     $row = $result->fetch_array(MYSQLI_ASSOC);
 
-    if (count($row) == 0) {
+    if (empty($row)) {
         $query = "INSERT INTO cartItem (userID, productID, cartQty) VALUES 
               ('$userID', '$productID', '$cartQty')";
     }else {
@@ -84,6 +84,7 @@ if (isset($_POST['promo'])) {
 if(isset($_SESSION['promoID'])){
     $promoID = $_SESSION['promoID'];
 }
+$invalidpromo = null;
 if(isset($_SESSION['invalidpromo'])){
     $invalidpromo = $_SESSION['invalidpromo'];
 }
@@ -242,7 +243,6 @@ $custResult = $conn->query($custQuery);
 if(!$custResult) die($conn->error);
 $customer = $custResult->fetch_array(MYSQLI_ASSOC);
 
-error_log(print_r("above checkout:".$promoID, true));
 echo <<<_END
         
             <section class="py-5">
