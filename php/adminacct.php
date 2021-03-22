@@ -91,15 +91,15 @@ echo <<<_END
                     </ul>
             </div>
                 <div class="col-lg-12 form-group" style="text-align: center">
-                    <button class="btn btn-outline-dark btn-link" type="submit"><a href="aorderlist.php">View All Customer Orders</a></button>
+                    <button class="btn btn-outline-dark" type="submit"><a href="aorderlist.php">View All Customer Orders</a></button>
                 </div>
             <hr style="padding-bottom: 20px;">
             <div class="row">
                 <div class="col-lg-6 form-group" style="text-align: center">
-                    <button class="btn btn-outline-dark btn-link" type="submit"><a href="aproducts.php">Manage Inventory</a></button>
+                    <button class="btn btn-outline-dark" type="submit"><a href="aproducts.php">Manage Inventory</a></button>
                 </div>
                 <div class="col-lg-6 form-group" style="text-align: center">
-                    <button class="btn btn-outline-dark btn-link" type="submit"><a href="areports.php">Sales Data</a></button>
+                    <button class="btn btn-outline-dark" type="submit"><a href="areports.php">Sales Data</a></button>
                 </div>
             </div>
         </div>
