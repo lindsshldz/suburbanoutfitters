@@ -1,22 +1,21 @@
 <?php
 $page_roles = array('admin','customer');
+//$userID = null;
 require_once 'checksession.php';
 include 'navbar.php';
 
 $conn = new mysqli($hn, $un, $pw, $db);
 if($conn->connect_error) die($conn->connect_error);
 
-$userID = mysql_entities_fix_string($conn,$_GET['userID']);
-
 if(isset($_POST['submit'])) {
     $fname = mysql_entities_fix_string($conn,$_POST['firstName']);
     $lname = mysql_entities_fix_string($conn,$_POST['lastName']);
     $email = mysql_entities_fix_string($conn,$_POST['email']);
     $phone = mysql_entities_fix_string($conn,$_POST['phoneNumber']);
-    $password = mysql_entities_fix_string($conn,$_POST['password']);
 
-    $query = "UPDATE users SET firstName='$fname', lastName='$lname', email='$email', phoneNumber='$phone', 
-                     password='$password' WHERE userID=$userID";
+    $query = "UPDATE users SET firstName='$fname', lastName='$lname', email='$email', phoneNumber='$phone' 
+                    WHERE userID=$userID";
+    error_log('custupdate query: '.$query);
     $result = $conn->query($query);
     if(!$result) die($conn->error);
 
