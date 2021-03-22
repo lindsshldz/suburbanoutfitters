@@ -105,6 +105,7 @@ $total = 0;
 for($j=0; $j<$rows; ++$j) {
     $row = $result->fetch_array(MYSQLI_ASSOC);
     $total = $row['totalPrice'];
+    sprintf("%01.2f", $total);
     array_push($orderData, $row);
 }
 echo <<<_END
@@ -166,7 +167,7 @@ for($j=0; $j<$rows; ++$j) {
                                 <div class="quantity">$orderline[quantity]</div>
                             </td>
                             <td class="align-middle border-0">
-                                <p class="mb-0 small">$prodTotal</p>
+                                <p class="mb-0 small">$$prodTotal</p>
                             </td>
                         </tr>
 _END;
@@ -188,7 +189,7 @@ echo <<<_END
                             <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$$subtotal</span></li>
                             <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Tax</strong><span class="text-muted small">$$tax</span></li>
                             <li class="border-bottom my-2"></li>
-                            <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$total</span></li>
+                            <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$$total</span></li>
                         </ul>
                     </div>
                 </div>
