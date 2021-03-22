@@ -44,7 +44,7 @@ echo <<<_END
                 <p class="text-small mb-4">$row[productDescription]</p>
                 <form method="post" action="cart.php">
                 <ul class="list-unstyled small d-inline-block">
-                    <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Size:</strong><select name="invSize" style="margin-left: 10px;">
+                    <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">Size:</strong><select name="invSize" style="margin-left: 10px;" required>
                         <option></option>
 _END;
 $invQuery = "SELECT * FROM inventory WHERE productID = '$productID'";

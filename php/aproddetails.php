@@ -81,23 +81,23 @@ echo <<<_END
             <table>
                 <tr>
                     <td class="col-form-label">Product Name: </td>
-                    <td class="col-form-label"><input type="text" id="productName" name="productName" value="$row[productName]"></td>
+                    <td class="col-form-label"><input type="text" id="productName" name="productName" value="$row[productName]" required></td>
                 </tr>
                 <tr>
                     <td class="col-form-label">Sell Price: </td>
-                    <td class="col-form-label"><input type="number" id="sellPrice" name="sellPrice" value="$row[sellPrice]"></td>
+                    <td class="col-form-label"><input type="number" id="sellPrice" name="sellPrice" value="$row[sellPrice]" required></td>
                 </tr>
                 <tr>
                     <td class="col-form-label">Description: </td>
-                    <td class="col-form-label"><textarea rows="3" cols="19" name="description" form="product">$row[productDescription]</textarea></td>
+                    <td class="col-form-label"><textarea rows="3" cols="19" name="description" form="product" required>$row[productDescription]</textarea></td>
                 </tr>
                 <tr>
                     <td class="col-form-label">Category: </td>
-                    <td class="col-form-label"><input type="text" id="category" name="category" value="$row[category]"></td>
+                    <td class="col-form-label"><input type="text" id="category" name="category" value="$row[category]" required></td>
                 </tr>
                 <tr>
                     <td class="col-form-label">SKU: </td>
-                    <td class="col-form-label"><input type="text" id="sku" name="sku" value="$row[sku]"></td>
+                    <td class="col-form-label"><input type="text" id="sku" name="sku" value="$row[sku]" required></td>
                 </tr>
                 <tr>
                     <td class="col-form-label">Tags: </td>
@@ -124,18 +124,18 @@ for($j=0; $j<$rows; ++$j) {
                     <form method="post" action="aproddetails.php">
                     <tr class="col-form-label">
                         <td><label for="Size">Size: </label></td>
-                        <td><input style="margin-right: 10px;"type="text" id="size" name="size" value="$row[invSize]">
+                        <td><input style="margin-right: 10px;"type="text" id="size" name="size" value="$row[invSize]" required>
                         </td>
                         
                         <td><label for="quantity">Qty:  </label></td>
-                        <td><input style="width: 100px; margin-right: 10px;" type="number" id="quantity" name="quantity" value="$row[quantity]"></td>
+                        <td><input style="width: 100px; margin-right: 10px;" type="number" id="quantity" name="quantity" value="$row[quantity]" required></td>
                         
                         <td><label for="price">Cost:</label></td>
-                        <td><input style="width: 100px; margin-right: 10px;" type="number" id="price" name="cost" value="$row[cost]">
+                        <td><input style="width: 100px; margin-right: 10px;" type="number" id="price" name="cost" value="$row[cost]" required>
                         </td>
                         
                         <td><label for="Size">Store ID: </label></td>
-                        <td><input style="width: 100px; margin-right: 20px;" type="number" id="Size" name="storeID" value="$row[storeID]">
+                        <td><input style="width: 100px; margin-right: 20px;" type="number" id="Size" name="storeID" value="$row[storeID]" required>
                         </td>
                         <input type="hidden" name="inventoryID"value="$row[inventoryID]" >
                         <input type="hidden" name="productID" value="$productID">

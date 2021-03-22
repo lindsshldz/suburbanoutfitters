@@ -59,7 +59,7 @@ echo <<<_END
                         <br><br>
             
                         <p>Last Name</p>
-                        <input type="text" id="lastName" value="$row[lastName]" name="lastName" placeholder="Enter Last Name"/>
+                        <input type="text" id="lastName" value="$row[lastName]" name="lastName" placeholder="Enter Last Name" required/>
                         <br><br>
             
                         <p>Email</p>
